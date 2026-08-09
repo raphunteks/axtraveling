@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ========================================== -->
+    <!-- SEO & META TAGS (ENTERPRISE STANDARD)      -->
+    <!-- ========================================== -->
+    <title>AXA Timeline Traveling - Exclusive Itinerary</title>
+    <meta name="description" content="Sistem manajemen rundown dan timeline perjalanan eksklusif dari AXA. Kelola jadwal, destinasi, dan itinerary dengan elegan.">
+    <meta name="keywords" content="AXA, Timeline, Traveling, Itinerary, Rundown, Perjalanan Eksklusif, Maksaarsyad">
+    <meta name="author" content="AXA Group & Maksaarsyad">
+    <link rel="canonical" href="https://traveling.maksaarsyad.xyz/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://traveling.maksaarsyad.xyz/">
+    <meta property="og:title" content="AXA Timeline Traveling - Exclusive Itinerary">
+    <meta property="og:description" content="Sistem manajemen rundown perjalanan eksklusif dari AXA. Terintegrasi dengan portal utama Maksaarsyad Traveling.">
+    <meta property="og:image" content="https://axa-timeline-traveling.vercel.app/axalogo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://traveling.maksaarsyad.xyz/">
+    <meta property="twitter:title" content="AXA Timeline Traveling">
+    <meta property="twitter:description" content="Sistem manajemen rundown perjalanan eksklusif dari AXA.">
+    <meta property="twitter:image" content="https://axa-timeline-traveling.vercel.app/axalogo.png">
+
+    <!-- JSON-LD Schema Markup (Structured Data untuk SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "AXA Exclusive Traveling Program",
+      "description": "Program perjalanan eksklusif dan manajemen itinerary untuk klien AXA. Terintegrasi dengan portal Maksaarsyad Traveling.",
+      "image": "https://axa-timeline-traveling.vercel.app/axalogo.png",
+      "url": "https://traveling.maksaarsyad.xyz/",
+      "startDate": "2026-08-10T08:00:00+07:00",
+      "endDate": "2026-08-15T20:00:00+07:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "location": {
+        "@type": "Place",
+        "name": "Global Destinations",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "ID"
+        }
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "AXA x Maksaarsyad",
+        "url": "https://traveling.maksaarsyad.xyz/"
+      }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/axalogo.png">
+
+    <!-- Google Fonts (Ibarra Real Nova & Poppins) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sticky Navigation -->
+    <header class="header">
+        <div class="container nav-container">
+            <div class="brand">
+                <img src="/axalogo.png" alt="AXA" class="brand-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/512px-AXA_Logo.svg.png'; this.onerror=null;">
+                <h2 class="logo-text">TIMELINE</h2>
+            </div>
+            <nav class="nav-links" id="filterNav">
+                <button class="nav-link active" data-day="all">Semua Jadwal</button>
+                <button class="nav-link" data-day="1">Hari 1</button>
+                <button class="nav-link" data-day="2">Hari 2</button>
+                <button class="nav-link" data-day="3">Hari 3</button>
+                <!-- INTEGRASI PORTAL UTAMA -->
+                <a href="https://traveling.maksaarsyad.xyz/" target="_blank" class="btn btn-accent" style="padding: 8px 16px; font-size: 13px; margin-left: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
+                    Portal Utama
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero container">
+            <h1 class="display-title">Exclusive Journey</h1>
+            <p class="body-text">
+                Kelola rundown perjalanan eksklusif Anda dengan presisi. Sistem arsitektur manajemen itinerary AXA dirancang untuk memberikan pengalaman tanpa hambatan dari keberangkatan hingga kepulangan.
+            </p>
+            <div class="hero-actions">
+                <button class="btn btn-primary" id="btnOpenAddModal">Tambah Agenda</button>
+                <button class="btn btn-ghost" id="btnExportExcel">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Export to XLSX
+                </button>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section class="timeline-section container">
+            <div class="timeline" id="timelineContainer">
+                <!-- Timeline Items (Rendered via JS) -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Super Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <img src="/axalogo.png" alt="AXA Logo" style="height: 32px; margin-bottom: 24px;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/512px-AXA_Logo.svg.png';">
+                    <p>Mendedikasikan pelayanan manajemen itinerary eksklusif dengan presisi dan kenyamanan maksimal bagi para pelancong VIP kami.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Pintasan</h4>
+                    <a href="#timelineContainer">Lihat Jadwal</a>
+                    <a href="#" id="footerAddBtn">Tambah Agenda</a>
+                    <a href="#" id="footerExportBtn">Unduh Rundown (XLSX)</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Portal Afiliasi</h4>
+                    <!-- INTEGRASI PORTAL UTAMA DI FOOTER -->
+                    <p>Jelajahi destinasi, paket perjalanan, dan layanan unggulan lainnya melalui portal utama kami.</p>
+                    <a href="https://traveling.maksaarsyad.xyz/" target="_blank" style="color: var(--color-accent); font-weight: 500; display: inline-flex; align-items: center;">
+                        Maksaarsyad Traveling Official
+                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 AXA Group x Maksaarsyad Traveling. All rights reserved. Built with Enterprise Standard.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal: Form CRUD -->
+    <div class="modal-overlay" id="formModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="section-title" id="modalTitle" style="margin-bottom: 32px; font-size: 32px; text-align: left;">Tambah Agenda</h2>
+            </div>
+            <form id="rundownForm" class="standard-form">
+                <input type="hidden" id="agendaId">
+                <div class="form-group">
+                    <label>Judul Aktivitas</label>
+                    <input type="text" id="agendaTitle" class="form-control" placeholder="Cth: Keberangkatan VIP" required>
+                </div>
+                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1; min-width: 150px;">
+                        <label>Hari Ke-</label>
+                        <select id="agendaDay" class="form-control" required style="background: var(--color-canvas);">
+                            <option value="1">Hari 1</option>
+                            <option value="2">Hari 2</option>
+                            <option value="3">Hari 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="flex: 1; min-width: 150px;">
+                        <label>Waktu (WIB)</label>
+                        <input type="time" id="agendaTime" class="form-control" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Destinasi / Lokasi</label>
+                    <input type="text" id="agendaDest" class="form-control" placeholder="Cth: Terminal 3 Soekarno-Hatta" required>
+                </div>
+                <div class="form-group">
+                    <label>Deskripsi Detail</label>
+                    <input type="text" id="agendaDesc" class="form-control" placeholder="Catatan penting untuk peserta..." required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-ghost" id="btnCancelModal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan Agenda</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal: Delete Confirmation -->
+    <div class="modal-overlay" id="confirmModal">
+        <div class="modal-content" style="text-align: center; max-width: 450px; padding: 40px 32px;">
+            <div style="width: 80px; height: 80px; background: rgba(239, 68, 68, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                <svg width="40" height="40" fill="none" stroke="#ef4444" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+            </div>
+            <h2 class="section-title" style="margin-bottom: 16px; font-size: 28px;">Hapus Data?</h2>
+            <p class="body-text" style="color: var(--color-text-muted); font-size: 15px; margin-bottom: 32px;">
+                Tindakan ini permanen. Agenda yang dihapus tidak dapat dikembalikan lagi.
+            </p>
+            <div class="form-actions" style="justify-content: center; margin-top: 0; gap: 16px;">
+                <button type="button" class="btn btn-ghost" id="btnCancelDelete">Batalkan</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmDelete" style="background: #ef4444; border-color: #ef4444; color: white;">Ya, Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- External JavaScript (Module) -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
