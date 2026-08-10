@@ -154,13 +154,12 @@
             <form id="rundownForm" class="standard-form">
                 <input type="hidden" id="agendaId">
                 <div class="form-group">
-                    <label>Judul Aktivitas</label>
+                    <label>Judul Aktivitas + Order Food Online</label>
                     <input type="text" id="agendaTitle" class="form-control" placeholder="Cth: Keberangkatan VIP" required>
                 </div>
                 <div style="display: flex; gap: 24px; flex-wrap: wrap;">
                     <div class="form-group" style="flex: 1; min-width: 150px;">
                         <label>Hari Ke-</label>
-                        <!-- UPGRADE: Mengubah Select Menjadi Text Input Bebas -->
                         <input type="text" id="agendaDay" class="form-control" placeholder="Cth: 4 atau Hari 4" required style="background: var(--color-canvas);">
                     </div>
                     <div class="form-group" style="flex: 1; min-width: 150px;">
@@ -168,6 +167,19 @@
                         <input type="time" id="agendaTime" class="form-control" required>
                     </div>
                 </div>
+                
+                <!-- NEW FEATURE: ESTIMASI BIAYA & JUMLAH -->
+                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1; min-width: 150px;">
+                        <label>Jmlh Orang / Pcs (Opsional)</label>
+                        <input type="number" id="agendaQty" class="form-control" placeholder="Cth: 2" min="1">
+                    </div>
+                    <div class="form-group" style="flex: 1; min-width: 150px;">
+                        <label>Estimasi Biaya (Rp)</label>
+                        <input type="number" id="agendaCost" class="form-control" placeholder="Cth: 150000" min="0">
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label>Destinasi / Lokasi</label>
                     <input type="text" id="agendaDest" class="form-control" placeholder="Cth: Terminal 3 Soekarno-Hatta" required>
