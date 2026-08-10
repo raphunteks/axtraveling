@@ -62,7 +62,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     
-    <!-- Inline styles for the modal tabs -->
     <style>
         .modal-tab-btn {
             background: transparent; border: none; border-bottom: 2px solid transparent; 
@@ -72,6 +71,23 @@
         }
         .modal-tab-btn:hover { color: var(--color-text-main); }
         .modal-tab-btn.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+        
+        .order-item-row {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+        .remove-order-btn {
+            position: absolute; top: 12px; right: 12px;
+            background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444;
+            width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 14px;
+            transition: background 0.2s;
+        }
+        .remove-order-btn:hover { background: rgba(239, 68, 68, 0.25); }
     </style>
 </head>
 <body>
@@ -151,7 +167,6 @@
             
             <h2 class="section-title" id="modalTitle" style="margin-bottom: 24px; font-size: 32px; text-align: left;">Tambah Agenda</h2>
             
-            <!-- SMART TAB NAVIGATION -->
             <div style="display: flex; gap: 8px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
                 <button type="button" class="modal-tab-btn active" data-tabtype="travel">🛫 Agenda Perjalanan</button>
                 <button type="button" class="modal-tab-btn" data-tabtype="food">🛍️ Makan & Belanja</button>
@@ -159,13 +174,9 @@
 
             <form id="rundownForm" class="standard-form">
                 <input type="hidden" id="agendaId">
-                <input type="hidden" id="agendaType" value="travel"> <!-- Menyimpan kategori tab -->
+                <input type="hidden" id="agendaType" value="travel">
 
-                <div class="form-group">
-                    <label id="lblTitle">Judul Aktivitas</label>
-                    <input type="text" id="agendaTitle" class="form-control" placeholder="Silakan masukkan aktivitas..." required>
-                </div>
-                
+                <!-- COMMON FIELDS -->
                 <div style="display: flex; gap: 24px; flex-wrap: wrap;">
                     <div class="form-group" style="flex: 1; min-width: 150px;">
                         <label>Hari Ke-</label>
@@ -176,26 +187,34 @@
                         <input type="time" id="agendaTime" class="form-control" required>
                     </div>
                 </div>
-                
-                <!-- DYNAMIC FEATURE: ESTIMASI BIAYA & JUMLAH (Hanya Muncul di Tab Makan/Belanja) -->
-                <div id="financialFields" style="display: none; gap: 24px; flex-wrap: wrap;">
-                    <div class="form-group" style="flex: 1; min-width: 150px;">
-                        <label>Jmlh Orang / Pcs (Opsional)</label>
-                        <input type="number" id="agendaQty" class="form-control" placeholder="Cth: 2" min="1">
+
+                <div class="form-group">
+                    <label id="lblDest">Destinasi / Lokasi Umum</label>
+                    <input type="text" id="agendaDest" class="form-control" placeholder="Detail lokasi..." required>
+                </div>
+
+                <!-- TRAVEL SPECIFIC FIELD -->
+                <div id="travelSpecificField">
+                    <div class="form-group">
+                        <label>Judul Aktivitas</label>
+                        <input type="text" id="agendaTitleTravel" class="form-control" placeholder="Cth: Keberangkatan VIP">
                     </div>
-                    <div class="form-group" style="flex: 1; min-width: 150px;">
-                        <label>Estimasi Biaya (Rp)</label>
-                        <input type="number" id="agendaCost" class="form-control" placeholder="Cth: 150000" min="0">
+                    <div class="form-group">
+                        <label>Deskripsi Detail</label>
+                        <input type="text" id="agendaDescTravel" class="form-control" placeholder="Catatan penting untuk peserta...">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label id="lblDest">Destinasi / Lokasi</label>
-                    <input type="text" id="agendaDest" class="form-control" placeholder="Detail lokasi..." required>
-                </div>
-                <div class="form-group">
-                    <label id="lblDesc">Deskripsi Detail</label>
-                    <input type="text" id="agendaDesc" class="form-control" placeholder="Catatan penting untuk peserta..." required>
+                <!-- FOOD & SHOPPING MULTIPLE ORDERS -->
+                <div id="foodSpecificContainer" style="display: none;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                        <label style="font-size: 13px; font-weight: 500; color: var(--color-accent); text-transform: uppercase; letter-spacing: 1px;">Daftar Pesanan & Outlet</label>
+                        <button type="button" id="btnAddMoreOrder" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px; border-color: var(--color-accent); color: var(--color-accent);">+ Order Lain</button>
+                    </div>
+                    
+                    <div id="orderItemsWrapper">
+                        <!-- Dynamic Order Rows Will Be Injected Here -->
+                    </div>
                 </div>
                 
                 <div class="form-actions">
