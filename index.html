@@ -1,30 +1,41 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- ========================================== -->
-    <!-- SEO & META TAGS (ENTERPRISE STANDARD)      -->
-    <!-- ========================================== -->
     <title>AXA Timeline Traveling - Exclusive Itinerary</title>
     <meta name="description" content="Sistem manajemen rundown dan timeline perjalanan eksklusif dari AXA. Kelola jadwal, destinasi, dan itinerary dengan elegan.">
     <meta name="keywords" content="AXA, Timeline, Traveling, Itinerary, Rundown, Perjalanan Eksklusif, Maksaarsyad">
+    <meta name="author" content="AXA Group & Maksaarsyad">
+    <link rel="canonical" href="https://traveling.maksaarsyad.xyz/">
     
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://traveling.maksaarsyad.xyz/">
+    <meta property="og:title" content="AXA Timeline Traveling - Exclusive Itinerary">
+    <meta property="og:description" content="Sistem manajemen rundown perjalanan eksklusif dari AXA. Terintegrasi dengan portal utama Maksaarsyad Traveling.">
+    <meta property="og:image" content="https://traveling.maksaarsyad.xyz/axalogo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://traveling.maksaarsyad.xyz/">
+    <meta property="twitter:title" content="AXA Timeline Traveling">
+    <meta property="twitter:description" content="Sistem manajemen rundown perjalanan eksklusif dari AXA.">
+    <meta property="twitter:image" content="https://traveling.maksaarsyad.xyz/axalogo.png">
+
     <link rel="icon" type="image/png" href="/axalogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* ==========================================================================
-           CSS VARIABLES (BEM FEB UI x AXA DESIGN SYSTEM)
-           ========================================================================== */
         :root {
             --color-primary: transparent;
             --color-accent: #3B82F6; 
             --color-accent-glow: rgba(59, 130, 246, 0.15);
-            --color-food: #F59E0B; /* Kategori Makan */
+            --color-food: #F59E0B;
             --color-canvas: #161512;
             --color-surface: #050505;
             --color-border: #333333;
@@ -48,18 +59,9 @@
             --layout-max-width: 1280px;
         }
 
-        /* RESET & BASE STYLES */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background-color: var(--color-canvas); color: var(--color-text-main);
-            font-family: var(--font-body); font-size: 16px; font-weight: 300;
-            line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative;
-        }
-        body::before {
-            content: ''; position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
-            z-index: -1; pointer-events: none; opacity: 0.7;
-        }
+        body { background-color: var(--color-canvas); color: var(--color-text-main); font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
+        body::before { content: ''; position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%); z-index: -1; pointer-events: none; opacity: 0.7; }
 
         h1, h2, h3, h4, .logo-text { font-family: var(--font-heading); color: var(--color-text-main); }
         .display-title { font-size: clamp(48px, 5vw, 84px); font-weight: 500; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
@@ -76,7 +78,6 @@
         .nav-link:hover, .nav-link.active { color: var(--color-text-main); background: rgba(255,255,255,0.05); }
         .nav-link.active { border-bottom: 2px solid var(--color-accent); border-radius: 4px 4px 0 0; }
 
-        /* BUTTONS */
         .btn { padding: 14px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 500; cursor: pointer; border-radius: var(--radius-md); transition: all var(--transition-speed) var(--transition-easing); color: var(--color-text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
         .btn-primary { background: var(--color-primary); border: 1px solid rgba(255,255,255,0.2); box-shadow: var(--shadow-sm); }
         .btn-primary:hover { background: var(--color-surface); border-color: var(--color-accent); box-shadow: var(--shadow-glow); color: var(--color-accent); transform: translateY(-2px); }
@@ -86,15 +87,16 @@
         .btn-ghost { background: transparent; border: 1px solid transparent; color: var(--color-text-muted); }
         .btn-ghost:hover { border-color: var(--color-border); color: var(--color-text-main); background: rgba(255,255,255,0.03); }
 
-        .hero { padding-top: 120px; padding-bottom: 96px; text-align: center; max-width: 900px; position: relative; margin: 0 auto; }
+        .hero { padding-top: 120px; padding-bottom: 96px; text-align: center; max-width: 900px; position: relative; margin: 0 auto;}
         .body-text { color: var(--color-text-muted); max-width: 700px; margin: 0 auto; font-size: 18px; }
         .hero-actions { margin-top: 48px; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
 
-        .timeline-section { max-width: 800px; padding-bottom: 96px; margin: 0 auto;}
+        .timeline-section { max-width: 800px; padding-bottom: 96px; margin: 0 auto; }
         .timeline { position: relative; padding-left: 48px; }
         .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--color-accent) 0%, var(--color-border) 20%); }
         .timeline-item { position: relative; margin-bottom: 48px; opacity: 0; transform: translateY(30px); }
         .timeline-node { position: absolute; left: -40.5px; top: 32px; width: 16px; height: 16px; border-radius: var(--radius-lg); background-color: var(--color-canvas); border: 2px solid var(--color-text-muted); transition: all var(--transition-speed); z-index: 2; }
+        
         .timeline-item:hover .timeline-node { border-color: var(--color-accent); box-shadow: 0 0 12px var(--color-accent); background: var(--color-accent); }
         .timeline-item.food-item:hover .timeline-node { border-color: var(--color-food); box-shadow: 0 0 12px var(--color-food); background: var(--color-food); }
 
@@ -117,28 +119,18 @@
         .icon-btn:hover { color: var(--color-text-main); background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
         .btn-delete:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.1); }
 
-        .footer { background: var(--color-surface); border-top: 1px solid var(--color-border); padding: 64px 0 32px 0; margin-top: 64px; }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; margin-bottom: 48px; }
-        .footer-col h4 { font-size: 20px; margin-bottom: 24px; color: var(--color-text-main); }
-        .footer-col p { color: var(--color-text-muted); font-size: 14px; margin-bottom: 16px; line-height: 1.8; }
-        .footer-col a { color: var(--color-text-muted); text-decoration: none; transition: color 0.2s; display: block; margin-bottom: 12px; font-size: 14px; }
-        .footer-col a:hover { color: var(--color-accent); }
-        .footer-bottom { text-align: center; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.05); color: var(--color-text-muted); font-size: 13px; }
-
         .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; z-index: 99; opacity: 0; visibility: hidden; transition: all var(--transition-speed); padding: 16px; }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--color-canvas); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 48px 32px; width: 100%; max-width: 600px; box-shadow: var(--shadow-lg); transform: translateY(30px) scale(0.95); transition: all var(--transition-speed); max-height: 90vh; overflow-y: auto; }
+        .modal-content { background: var(--color-canvas); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 48px 32px; width: 100%; max-width: 650px; box-shadow: var(--shadow-lg); transform: translateY(30px) scale(0.95); transition: all var(--transition-speed); max-height: 90vh; overflow-y: auto; }
         .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
 
         .standard-form { background: transparent; }
-        .form-group { margin-bottom: 28px; }
+        .form-group { margin-bottom: 24px; }
         .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--color-text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
         .form-control { width: 100%; padding: 0px 0px 12px 0px; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); border-radius: 0; color: var(--color-text-main); font-family: var(--font-body); font-size: 18px; font-weight: 300; transition: all var(--transition-speed); color-scheme: dark; }
         .form-control:focus { outline: none; border-bottom-color: var(--color-accent); box-shadow: 0 4px 2px -2px rgba(59, 130, 246, 0.3); }
         .form-control::placeholder { color: var(--color-text-muted); opacity: 0.4; }
         .form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 40px; }
-
-        .empty-state { text-align: center; padding: 64px 24px; border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md); background: rgba(255,255,255,0.02); }
 
         .modal-tab-btn { background: transparent; border: none; border-bottom: 2px solid transparent; color: var(--color-text-muted); cursor: pointer; padding: 8px 16px; font-size: 14px; font-weight: 500; font-family: var(--font-body); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; }
         .modal-tab-btn:hover { color: var(--color-text-main); }
@@ -149,14 +141,21 @@
         .remove-order-btn { position: absolute; top: 12px; right: 12px; background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: background 0.2s; }
         .remove-order-btn:hover { background: rgba(239, 68, 68, 0.25); }
 
-        /* Custom Alert Notification */
-        .custom-alert { position: fixed; top: 20px; right: 20px; background: #ef4444; color: white; padding: 16px 24px; border-radius: 8px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.5); transform: translateX(120%); transition: transform 0.3s ease; font-weight: 500; }
+        .empty-state { text-align: center; padding: 64px 24px; border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md); background: rgba(255,255,255,0.02); }
+
+        .custom-alert { position: fixed; top: 20px; right: 20px; background: #10B981; color: white; padding: 16px 24px; border-radius: 8px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.5); transform: translateX(120%); transition: transform 0.3s ease; font-weight: 500; }
+        .custom-alert.error { background: #EF4444; }
         .custom-alert.show { transform: translateX(0); }
+
+        .footer { background: var(--color-surface); border-top: 1px solid var(--color-border); padding: 64px 0 32px 0; margin-top: 64px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; margin-bottom: 48px; }
+        .footer-col h4 { font-size: 20px; margin-bottom: 24px; color: var(--color-text-main); }
+        .footer-col p, .footer-col a { color: var(--color-text-muted); font-size: 14px; margin-bottom: 12px; display: block; text-decoration: none; }
+        .footer-col a:hover { color: var(--color-accent); }
     </style>
 </head>
 <body>
 
-    <!-- Sticky Navigation -->
     <header class="header">
         <div class="container nav-container">
             <div class="brand">
@@ -169,7 +168,6 @@
                 </div>
                 <a href="https://traveling.maksaarsyad.xyz/" target="_blank" class="btn btn-accent" style="padding: 8px 16px; font-size: 13px; margin-left: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
                     Portal Utama
-                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                 </a>
             </nav>
         </div>
@@ -192,43 +190,14 @@
 
         <section class="timeline-section container">
             <div class="timeline" id="timelineContainer">
-                <!-- Timeline Items (Rendered via JS) -->
+                <!-- Timeline Items di-generate oleh JS -->
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <img src="/axalogo.png" alt="AXA Logo" style="height: 32px; margin-bottom: 24px;" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/512px-AXA_Logo.svg.png';">
-                    <p>Mendedikasikan pelayanan manajemen itinerary eksklusif dengan presisi dan kenyamanan maksimal bagi para pelancong VIP kami.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Pintasan</h4>
-                    <a href="#timelineContainer">Lihat Jadwal</a>
-                    <a href="#" id="footerAddBtn">Tambah Agenda</a>
-                    <a href="#" id="footerExportBtn">Unduh Rundown (XLSX)</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Portal Afiliasi</h4>
-                    <p>Jelajahi destinasi, paket perjalanan, dan layanan unggulan lainnya melalui portal utama kami.</p>
-                    <a href="https://traveling.maksaarsyad.xyz/" target="_blank" style="color: var(--color-accent); font-weight: 500; display: inline-flex; align-items: center;">
-                        Maksaarsyad Traveling Official
-                        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                &copy; 2026 M. Aksa Arsyad Timeline Traveling. All rights reserved.
-            </div>
-        </div>
-    </footer>
-
     <!-- Modal: Form CRUD -->
     <div class="modal-overlay" id="formModal">
         <div class="modal-content" style="padding-top: 32px;">
-            
             <h2 class="section-title" id="modalTitle" style="margin-bottom: 24px; font-size: 32px; text-align: left;">Tambah Agenda</h2>
             
             <div style="display: flex; gap: 8px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
@@ -269,15 +238,14 @@
                     </div>
                 </div>
 
-                <!-- FOOD & SHOPPING MULTIPLE ORDERS -->
+                <!-- FOOD & SHOPPING MULTIPLE ORDERS (Nested) -->
                 <div id="foodSpecificContainer" style="display: none;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                         <label style="font-size: 13px; font-weight: 500; color: var(--color-food); text-transform: uppercase; letter-spacing: 1px;">Daftar Pesanan & Outlet</label>
                         <button type="button" id="btnAddMoreOrder" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px; border-color: var(--color-food); color: var(--color-food);">+ Order Lain</button>
                     </div>
-                    
                     <div id="orderItemsWrapper">
-                        <!-- Dynamic Order Rows Will Be Injected Here -->
+                        <!-- Dynamic Order Rows di-generate oleh JS -->
                     </div>
                 </div>
                 
@@ -297,7 +265,7 @@
             </div>
             <h2 class="section-title" style="margin-bottom: 16px; font-size: 28px;">Hapus Data?</h2>
             <p class="body-text" style="color: var(--color-text-muted); font-size: 15px; margin-bottom: 32px;">
-                Tindakan ini permanen. Agenda yang dihapus tidak dapat dikembalikan lagi.
+                Tindakan ini permanen. Seluruh data pesanan di dalam agenda ini akan ikut terhapus.
             </p>
             <div class="form-actions" style="justify-content: center; margin-top: 0; gap: 16px;">
                 <button type="button" class="btn btn-ghost" id="btnCancelDelete">Batalkan</button>
@@ -306,7 +274,6 @@
         </div>
     </div>
     
-    <!-- Custom Notification Box -->
     <div id="customAlert" class="custom-alert"></div>
 
     <script type="module">
@@ -316,26 +283,34 @@
             const STORAGE_KEY = 'axa_premium_rundown';
             const GAS_API_URL = "https://script.google.com/macros/s/AKfycbx6Of-Ochxpzaw-xwWCW46zwQQ90g4SJJ-tX8dMn5kJTtK_FXWszYyIyCcAqdex1YeD/exec";
             
+            // State Aplikasi (Grouping Mode)
             let rundownData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
             let currentFilter = 'all';
             let itemToDeleteId = null;
 
-            // Custom Notification Helper
-            function showNotification(msg) {
+            function showNotification(msg, isError = false) {
                 const box = document.getElementById('customAlert');
                 box.textContent = msg;
+                if(isError) box.classList.add('error'); else box.classList.remove('error');
                 box.classList.add('show');
                 setTimeout(() => box.classList.remove('show'), 3000);
             }
 
-            // Sync Logic
             function saveToStorage() {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(rundownData));
                 fetch(GAS_API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
                     body: JSON.stringify({ action: 'sync', data: rundownData })
-                }).catch(err => console.error("Cloud Sync Failed:", err));
+                })
+                .then(res => res.json())
+                .then(resp => {
+                    if(resp.status === 'success') showNotification("Tersinkronisasi dengan Cloud Sheet");
+                })
+                .catch(err => {
+                    console.error("Cloud Sync Failed:", err);
+                    showNotification("Gagal sinkronisasi ke Cloud", true);
+                });
             }
 
             function fetchFromCloud() {
@@ -343,7 +318,34 @@
                     .then(res => res.json())
                     .then(data => {
                         if(data && Array.isArray(data)) {
-                            rundownData = data;
+                            // Algoritma Grouping: Code.gs mereturn data Flat, Web menggabungkannya kembali (Parent-Child)
+                            let groupedData = [];
+                            let foodMap = {};
+
+                            data.forEach(row => {
+                                if(row.type === 'travel') {
+                                    groupedData.push(row); // Travel tetap normal
+                                } else if (row.type === 'food') {
+                                    if(!foodMap[row.id]) {
+                                        // Buat Parent Agenda Baru
+                                        foodMap[row.id] = {
+                                            id: row.id, type: 'food', day: row.day, time: row.time, dest: row.dest,
+                                            orders: []
+                                        };
+                                        groupedData.push(foodMap[row.id]);
+                                    }
+                                    // Masukkan anak-anak pesanannya
+                                    foodMap[row.id].orders.push({
+                                        category: row.item_category || 'Lainnya',
+                                        title: row.item_title || '',
+                                        desc: row.item_desc || '',
+                                        qty: parseInt(row.item_qty) || 1,
+                                        cost: parseFloat(row.item_cost) || 0,
+                                        total: parseFloat(row.item_total) || 0
+                                    });
+                                }
+                            });
+                            rundownData = groupedData;
                             localStorage.setItem(STORAGE_KEY, JSON.stringify(rundownData));
                             renderFilters(); 
                             renderTimeline(); 
@@ -352,13 +354,10 @@
                     .catch(err => console.error("Failed fetching data from Cloud:", err));
             }
 
-            // DOM References
             const timelineContainer = document.getElementById('timelineContainer');
             const dynamicFiltersContainer = document.getElementById('dynamicFilters');
             const formModal = document.getElementById('formModal');
             const rundownForm = document.getElementById('rundownForm');
-            const modalTitle = document.getElementById('modalTitle');
-            const confirmModal = document.getElementById('confirmModal');
             
             const inputId = document.getElementById('agendaId');
             const inputType = document.getElementById('agendaType');
@@ -366,165 +365,117 @@
             const inputTime = document.getElementById('agendaTime');
             const inputDest = document.getElementById('agendaDest');
             
-            const travelSpecificField = document.getElementById('travelSpecificField');
-            const foodSpecificContainer = document.getElementById('foodSpecificContainer');
             const orderItemsWrapper = document.getElementById('orderItemsWrapper');
             const btnAddMoreOrder = document.getElementById('btnAddMoreOrder');
-            
-            const inputTitleTravel = document.getElementById('agendaTitleTravel');
-            const inputDescTravel = document.getElementById('agendaDescTravel');
-            const lblDest = document.getElementById('lblDest');
             const modalTabBtns = document.querySelectorAll('.modal-tab-btn');
 
-            const formatRp = (num) => {
-                if (!num) return "Rp 0";
-                return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
-            };
+            const formatRp = (num) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
 
-            // --- MULTIPLE ORDER ROWS BUILDER (UPGRADED) ---
+            // Row Template untuk Order (Anak)
             function addOrderRow(data = {}) {
                 const row = document.createElement('div');
                 row.className = 'order-item-row';
                 
-                // Set existing category selected
-                const catMakanan = data.category === 'Makanan' ? 'selected' : '';
-                const catMinuman = data.category === 'Minuman' ? 'selected' : '';
-                const catSnack = data.category === 'Snack/Dessert' ? 'selected' : '';
-                const catLainnya = data.category === 'Belanja/Lainnya' ? 'selected' : '';
+                const cMak = data.category === 'Makanan' ? 'selected' : '';
+                const cMin = data.category === 'Minuman' ? 'selected' : '';
+                const cSnk = data.category === 'Snack' ? 'selected' : '';
+                const cLain = data.category === 'Belanja/Lainnya' ? 'selected' : '';
 
                 row.innerHTML = `
                     <button type="button" class="remove-order-btn" title="Hapus Item">&times;</button>
-                    
                     <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;">
                         <div class="form-group" style="flex: 1; min-width: 130px; margin-bottom:0;">
                             <label style="font-size: 11px;">Kategori</label>
                             <select class="form-control order-category" required style="background: var(--color-canvas); font-size: 14px; padding-bottom:10px;">
-                                <option value="Makanan" ${catMakanan}>Makanan</option>
-                                <option value="Minuman" ${catMinuman}>Minuman</option>
-                                <option value="Snack/Dessert" ${catSnack}>Snack / Dessert</option>
-                                <option value="Belanja/Lainnya" ${catLainnya}>Belanja / Lain</option>
+                                <option value="Makanan" ${cMak}>Makanan</option>
+                                <option value="Minuman" ${cMin}>Minuman</option>
+                                <option value="Snack" ${cSnk}>Snack / Dessert</option>
+                                <option value="Belanja/Lainnya" ${cLain}>Belanja / Lain</option>
                             </select>
                         </div>
                         <div class="form-group" style="flex: 2; min-width: 200px; margin-bottom:0;">
                             <label style="font-size: 11px;">Menu / Item Pesanan</label>
-                            <input type="text" class="form-control order-title" placeholder="Cth: Kopi Susu / Nasi Goreng" value="${data.title || ''}" required>
+                            <input type="text" class="form-control order-title" placeholder="Cth: Kopi Susu" value="${data.title || ''}" required>
                         </div>
                     </div>
-
                     <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;">
                         <div class="form-group" style="flex: 1; margin-bottom:0;">
-                            <label style="font-size: 11px;">Jumlah (Pcs/Org)</label>
+                            <label style="font-size: 11px;">Jml (Pcs/Org)</label>
                             <input type="number" class="form-control order-qty" placeholder="1" min="1" value="${data.qty || 1}" required>
                         </div>
                         <div class="form-group" style="flex: 1; margin-bottom:0;">
-                            <label style="font-size: 11px;">Estimasi Harga Satuan (Rp)</label>
+                            <label style="font-size: 11px;">Harga Satuan (Rp)</label>
                             <input type="number" class="form-control order-cost" placeholder="25000" min="0" value="${data.cost || ''}" required>
                         </div>
                     </div>
                     <div class="form-group" style="margin-bottom: 0;">
-                        <label style="font-size: 11px;">Catatan Pesanan Khusus (Opsional)</label>
-                        <input type="text" class="form-control order-desc" placeholder="Cth: Less sugar, extra ice" value="${data.desc || ''}">
+                        <label style="font-size: 11px;">Catatan (Opsional)</label>
+                        <input type="text" class="form-control order-desc" placeholder="Cth: Less sugar" value="${data.desc || ''}">
                     </div>
                 `;
                 
                 row.querySelector('.remove-order-btn').addEventListener('click', () => {
-                    if (orderItemsWrapper.children.length > 1) {
-                        row.remove();
-                    } else {
-                        showNotification("Minimal harus menyisakan 1 pesanan dalam satu waktu.");
-                    }
+                    if (orderItemsWrapper.children.length > 1) row.remove();
+                    else showNotification("Minimal harus menyisakan 1 pesanan.", true);
                 });
-
                 orderItemsWrapper.appendChild(row);
             }
 
             btnAddMoreOrder.addEventListener('click', () => addOrderRow());
 
-            // --- TAB SWITCHER ---
             function switchModalTab(type) {
                 modalTabBtns.forEach(btn => btn.classList.remove('active'));
                 document.querySelector(`.modal-tab-btn[data-tabtype="${type}"]`).classList.add('active');
                 inputType.value = type;
 
                 if (type === 'food') {
-                    lblDest.textContent = "Nama Resto / Toko / Outlet";
-                    travelSpecificField.style.display = "none";
-                    foodSpecificContainer.style.display = "block";
-                    
-                    if(orderItemsWrapper.children.length === 0) {
-                        addOrderRow();
-                    }
+                    document.getElementById('lblDest').textContent = "Nama Resto / Outlet";
+                    document.getElementById('travelSpecificField').style.display = "none";
+                    document.getElementById('foodSpecificContainer').style.display = "block";
+                    if(orderItemsWrapper.children.length === 0) addOrderRow();
                 } else {
-                    lblDest.textContent = "Destinasi / Lokasi Umum";
-                    travelSpecificField.style.display = "block";
-                    foodSpecificContainer.style.display = "none";
+                    document.getElementById('lblDest').textContent = "Destinasi / Lokasi Umum";
+                    document.getElementById('travelSpecificField').style.display = "block";
+                    document.getElementById('foodSpecificContainer').style.display = "none";
                 }
             }
+            modalTabBtns.forEach(btn => btn.addEventListener('click', (e) => switchModalTab(e.target.dataset.tabtype)));
 
-            modalTabBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => switchModalTab(e.target.dataset.tabtype));
-            });
-
-            // --- RENDER TIMELINE ---
             const revealObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                        observer.unobserve(entry.target);
-                    }
+                    if (entry.isIntersecting) { entry.target.style.opacity = '1'; entry.target.style.transform = 'translateY(0)'; observer.unobserve(entry.target); }
                 });
-            }, { threshold: 0.1, rootMargin: "0px 0px -20px 0px" });
+            }, { threshold: 0.1 });
 
             function renderFilters() {
-                if(!dynamicFiltersContainer) return;
                 const uniqueDays = [...new Set(rundownData.map(item => item.day))].sort((a, b) => {
                     const numA = parseInt(a.toString().replace(/\D/g, ''));
                     const numB = parseInt(b.toString().replace(/\D/g, ''));
-                    if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
-                    return a.localeCompare(b);
+                    return (!isNaN(numA) && !isNaN(numB)) ? numA - numB : a.localeCompare(b);
                 });
 
                 let html = `<button class="nav-link ${currentFilter === 'all' ? 'active' : ''}" data-day="all">Semua Jadwal</button>`;
                 uniqueDays.forEach(day => {
                     const isActive = currentFilter === day ? 'active' : '';
-                    const displayText = day.toString().toLowerCase().includes('hari') ? day : `Hari ${day}`;
-                    html += `<button class="nav-link ${isActive}" data-day="${day}">${displayText}</button>`;
+                    html += `<button class="nav-link ${isActive}" data-day="${day}">${day.toString().toLowerCase().includes('hari') ? day : 'Hari '+day}</button>`;
                 });
-
                 dynamicFiltersContainer.innerHTML = html;
-                dynamicFiltersContainer.querySelectorAll('.nav-link').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        currentFilter = e.target.dataset.day;
-                        renderFilters();
-                        renderTimeline();
-                    });
-                });
+                dynamicFiltersContainer.querySelectorAll('.nav-link').forEach(btn => btn.addEventListener('click', (e) => { currentFilter = e.target.dataset.day; renderFilters(); renderTimeline(); }));
             }
 
             function renderTimeline() {
                 timelineContainer.innerHTML = '';
-                
-                let filteredData = rundownData;
-                if (currentFilter !== 'all') {
-                    filteredData = rundownData.filter(item => item.day === currentFilter);
-                }
+                let filteredData = currentFilter !== 'all' ? rundownData.filter(i => i.day === currentFilter) : rundownData;
 
-                // Pengurutan Gabungan berdasarkan hari & waktu meski dari multi-sheet backend
                 filteredData.sort((a, b) => {
-                    if (a.day === b.day) return a.time.localeCompare(b.time);
+                    if (a.day === b.day) return (a.time||"").localeCompare(b.time||"");
                     const numA = parseInt(a.day.toString().replace(/\D/g, ''));
                     const numB = parseInt(b.day.toString().replace(/\D/g, ''));
-                    if (!isNaN(numA) && !isNaN(numB)) return numA - numB;
-                    return a.day.localeCompare(b.day);
+                    return (!isNaN(numA) && !isNaN(numB)) ? numA - numB : a.day.localeCompare(b.day);
                 });
 
                 if (filteredData.length === 0) {
-                    timelineContainer.innerHTML = `
-                        <div class="empty-state">
-                            <h3 style="margin-bottom: 12px; font-size: 20px;">Database Kosong</h3>
-                            <p style="color: var(--color-text-muted); font-size: 14px;">Belum ada agenda yang ditambahkan. Silahkan mulai membuat agenda baru.</p>
-                        </div>`;
+                    timelineContainer.innerHTML = `<div class="empty-state"><h3>Database Kosong</h3><p>Belum ada agenda yang ditambahkan.</p></div>`;
                     return;
                 }
 
@@ -533,35 +484,47 @@
                     el.className = `timeline-item ${item.type === 'food' ? 'food-item' : ''}`;
                     el.style.transition = `opacity 0.6s ease, transform 0.6s ease ${index * 0.08}s`;
                     
-                    const displayBadgeDay = item.day.toString().toLowerCase().includes('hari') ? item.day : `Day ${item.day}`;
+                    let safeTime = item.time?.match(/\d{2}:\d{2}/) ? item.time.match(/\d{2}:\d{2}/)[0] : item.time;
+                    let displayDay = item.day.toString().toLowerCase().includes('hari') ? item.day : `Day ${item.day}`;
                     
-                    let safeTime = item.time;
-                    if(safeTime && safeTime.match(/\d{2}:\d{2}/)) {
-                        safeTime = safeTime.match(/\d{2}:\d{2}/)[0];
-                    }
-                    
-                    let badgeTypeIcon = '';
-                    let costHtml = '';
-                    let titleAddon = '';
+                    let contentHtml = '';
                     
                     if (item.type === 'food') {
-                        badgeTypeIcon = `<span style="font-size: 12px; background: rgba(245, 158, 11, 0.1); color: var(--color-food); padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.3); margin-left: 8px;">🛍️ Makan / Belanja</span>`;
-                        titleAddon = item.category ? `<span style="font-size:13px; font-weight:400; color:var(--color-text-muted); margin-left:8px;">[${item.category}]</span>` : '';
-                        
-                        if (item.total && parseFloat(item.total) > 0) {
-                            costHtml = `
-                                <div style="margin-bottom:20px; padding:12px; background:rgba(245, 158, 11, 0.05); border-radius:8px; font-size:14px; border: 1px solid rgba(245, 158, 11, 0.2);">
-                                    <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                                        <span style="color:var(--color-text-muted);">Estimasi Biaya:</span> <strong>${formatRp(item.cost)}</strong>
+                        // Tampilan NESTED (Grouped Orders)
+                        let grandTotal = 0;
+                        let ordersListHtml = (item.orders || []).map(o => {
+                            grandTotal += parseFloat(o.total || 0);
+                            return `
+                                <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px; align-items: flex-start;">
+                                    <div>
+                                        <strong style="color:var(--color-text-main);">${o.title}</strong> 
+                                        <span style="opacity:0.6; font-size:11px; padding-left:4px;">(${o.category})</span>
+                                        ${o.desc ? `<div style="opacity:0.5; font-size:11px; margin-top:2px;">Catatan: ${o.desc}</div>` : ''}
                                     </div>
-                                    <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                                        <span style="color:var(--color-text-muted);">Jumlah (Pcs/Org):</span> <strong>${item.qty}</strong>
+                                    <div style="text-align: right; line-height:1.4;">
+                                        <span style="opacity:0.7;">${o.qty}x @ ${formatRp(o.cost)}</span><br>
+                                        <strong style="color: var(--color-food);">${formatRp(o.total)}</strong>
                                     </div>
-                                    <div style="display:flex; justify-content:space-between; border-top: 1px dashed rgba(255,255,255,0.1); padding-top:8px; margin-top:8px;">
-                                        <span style="color:var(--color-text-muted);">Total Tagihan (+ PPN 10%):</span> <strong style="color:var(--color-food); font-size:16px;">${formatRp(item.total)}</strong>
-                                    </div>
-                                </div>`;
-                        }
+                                </div>
+                            `;
+                        }).join('');
+
+                        contentHtml = `
+                            <div style="margin-bottom:20px; padding:20px; background:rgba(245, 158, 11, 0.05); border-radius:12px; border: 1px solid rgba(245, 158, 11, 0.2);">
+                                <h4 style="font-size: 12px; font-family:var(--font-body); margin-bottom: 16px; color: var(--color-food); text-transform:uppercase; letter-spacing:1px; border-bottom: 1px dashed rgba(245, 158, 11, 0.3); padding-bottom: 12px;">Daftar Pesanan Menu</h4>
+                                ${ordersListHtml}
+                                <div style="display: flex; justify-content: space-between; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 16px; margin-top: 12px; align-items:center;">
+                                    <span style="font-weight: 500; font-size:14px;">Total (+PPN 10%)</span>
+                                    <strong style="color: var(--color-food); font-size: 18px;">${formatRp(grandTotal)}</strong>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        // Tampilan Travel Biasa
+                        contentHtml = `
+                            <h3>${item.title}</h3>
+                            <p style="margin-bottom: 16px;">${item.desc}</p>
+                        `;
                     }
 
                     el.innerHTML = `
@@ -569,25 +532,21 @@
                         <div class="timeline-content">
                             <div class="timeline-header">
                                 <div>
-                                    <span class="time-badge">${displayBadgeDay} • ${safeTime} WITA</span>
-                                    ${badgeTypeIcon}
+                                    <span class="time-badge">${displayDay} • ${safeTime} WITA</span>
+                                    ${item.type === 'food' ? `<span style="font-size: 12px; background: rgba(245,158,11,0.1); color: var(--color-food); padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(245,158,11,0.3); margin-left: 8px;">🛍️ Outlet</span>` : ''}
                                 </div>
                                 <div class="action-icons">
-                                    <button class="icon-btn btn-edit" data-id="${item.id}" title="Edit">
-                                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                                    </button>
-                                    <button class="icon-btn btn-delete" data-id="${item.id}" title="Hapus">
-                                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                                    </button>
+                                    <button class="icon-btn btn-edit" data-id="${item.id}" title="Edit"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                                    <button class="icon-btn btn-delete" data-id="${item.id}" title="Hapus"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
                                 </div>
                             </div>
-                            <h3>${item.title} ${titleAddon}</h3>
-                            <p style="margin-bottom: 12px;">${item.desc}</p>
-                            ${costHtml}
+                            ${item.type === 'food' ? `<h3 style="margin-bottom:20px; color:var(--color-text-main);">${item.dest}</h3>` : ''}
+                            ${contentHtml}
+                            ${item.type !== 'food' ? `
                             <span class="tag-location">
-                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <svg width="16" height="16" fill="none" stroke="var(--color-accent)" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                                 ${item.dest}
-                            </span>
+                            </span>` : ''}
                         </div>
                     `;
                     timelineContainer.appendChild(el);
@@ -595,177 +554,134 @@
                 });
 
                 document.querySelectorAll('.btn-edit').forEach(btn => btn.addEventListener('click', (e) => openModal(e.currentTarget.closest('.btn-edit').dataset.id)));
-                document.querySelectorAll('.btn-delete').forEach(btn => btn.addEventListener('click', (e) => confirmDelete(e.currentTarget.closest('.btn-delete').dataset.id)));
+                document.querySelectorAll('.btn-delete').forEach(btn => btn.addEventListener('click', (e) => { itemToDeleteId = e.currentTarget.closest('.btn-delete').dataset.id; document.getElementById('confirmModal').classList.add('active'); }));
             }
 
-            // --- MODAL & CRUD LOGIC ---
             function openModal(id = null) {
                 rundownForm.reset();
                 orderItemsWrapper.innerHTML = '';
                 
                 if (id) {
-                    modalTitle.textContent = "Edit Agenda";
+                    document.getElementById('modalTitle').textContent = "Edit Agenda";
                     const item = rundownData.find(i => i.id === id);
                     if (item) {
                         inputId.value = item.id;
                         switchModalTab(item.type || 'travel');
-                        
                         inputDay.value = item.day;
-                        let safeTime = item.time;
-                        if(safeTime && safeTime.match(/\d{2}:\d{2}/)) { safeTime = safeTime.match(/\d{2}:\d{2}/)[0]; }
-                        inputTime.value = safeTime;
+                        inputTime.value = item.time?.match(/\d{2}:\d{2}/) ? item.time.match(/\d{2}:\d{2}/)[0] : item.time;
                         inputDest.value = item.dest;
                         
-                        if (item.type === 'food') {
-                            // Map existing category parameter
-                            addOrderRow({ title: item.title, qty: item.qty, cost: item.cost, desc: item.desc, category: item.category });
+                        if (item.type === 'food' && item.orders) {
+                            item.orders.forEach(o => addOrderRow(o)); // Load multiple order rows
                         } else {
-                            inputTitleTravel.value = item.title;
-                            inputDescTravel.value = item.desc;
+                            document.getElementById('agendaTitleTravel').value = item.title;
+                            document.getElementById('agendaDescTravel').value = item.desc;
                         }
                     }
                 } else {
-                    modalTitle.textContent = "Tambah Agenda";
+                    document.getElementById('modalTitle').textContent = "Tambah Agenda";
                     inputId.value = "";
                     switchModalTab('travel');
-                    addOrderRow(); // 1 empty row for food
+                    addOrderRow();
                     if (currentFilter !== 'all') inputDay.value = currentFilter;
                 }
                 formModal.classList.add('active');
             }
 
-            function closeModal() { formModal.classList.remove('active'); }
-            function confirmDelete(id) { itemToDeleteId = id; confirmModal.classList.add('active'); }
-            function closeConfirmModal() { confirmModal.classList.remove('active'); itemToDeleteId = null; }
-
             document.getElementById('btnOpenAddModal').addEventListener('click', () => openModal());
-            document.getElementById('footerAddBtn').addEventListener('click', (e) => { e.preventDefault(); openModal(); window.scrollTo({top: 0, behavior: 'smooth'}); });
-            document.getElementById('btnCancelModal').addEventListener('click', closeModal);
-            document.getElementById('btnCancelDelete').addEventListener('click', closeConfirmModal);
+            document.getElementById('btnCancelModal').addEventListener('click', () => formModal.classList.remove('active'));
+            document.getElementById('btnCancelDelete').addEventListener('click', () => document.getElementById('confirmModal').classList.remove('active'));
             
             document.getElementById('btnConfirmDelete').addEventListener('click', () => {
                 if (itemToDeleteId) {
                     rundownData = rundownData.filter(i => i.id !== itemToDeleteId);
-                    saveToStorage();
-                    renderFilters();
-                    renderTimeline();
-                    closeConfirmModal();
-                    showNotification("Agenda berhasil dihapus.");
+                    saveToStorage(); renderFilters(); renderTimeline();
+                    document.getElementById('confirmModal').classList.remove('active');
+                    showNotification("Agenda berhasil dihapus");
                 }
             });
 
             rundownForm.addEventListener('submit', (e) => {
                 e.preventDefault();
-                
                 let normalizedDay = inputDay.value.trim();
-                if(normalizedDay.toLowerCase().startsWith("hari ")) {
-                    normalizedDay = "Hari " + normalizedDay.substring(5);
-                }
+                if(normalizedDay.toLowerCase().startsWith("hari ")) normalizedDay = "Hari " + normalizedDay.substring(5);
 
                 const activeType = inputType.value;
+                let agendaData = {
+                    id: inputId.value || Date.now().toString(),
+                    type: activeType,
+                    day: normalizedDay,
+                    time: inputTime.value,
+                    dest: inputDest.value
+                };
 
                 if (activeType === 'travel') {
-                    const agendaData = {
-                        id: inputId.value || Date.now().toString(),
-                        type: 'travel',
-                        title: inputTitleTravel.value,
-                        day: normalizedDay,
-                        time: inputTime.value,
-                        dest: inputDest.value,
-                        desc: inputDescTravel.value,
-                        qty: 0, cost: 0, total: 0, category: ''
-                    };
-
-                    if (inputId.value) {
-                        const index = rundownData.findIndex(i => i.id === inputId.value);
-                        if (index !== -1) rundownData[index] = agendaData;
-                    } else {
-                        rundownData.push(agendaData);
-                    }
+                    agendaData.title = document.getElementById('agendaTitleTravel').value;
+                    agendaData.desc = document.getElementById('agendaDescTravel').value;
                 } else {
-                    // MULTIPLE ORDERS PROCESSING dengan Kategori
+                    // Logic Parent (Agenda) -> Menyimpan Array of Orders (Anak)
+                    agendaData.orders = [];
                     const rows = orderItemsWrapper.querySelectorAll('.order-item-row');
-                    
-                    if (inputId.value) {
-                        rundownData = rundownData.filter(i => i.id !== inputId.value);
-                    }
-
-                    rows.forEach((row, idx) => {
-                        const title = row.querySelector('.order-title').value;
-                        const category = row.querySelector('.order-category').value;
-                        const qty = parseInt(row.querySelector('.order-qty').value) || 1;
+                    rows.forEach(row => {
                         const cost = parseFloat(row.querySelector('.order-cost').value) || 0;
-                        const desc = row.querySelector('.order-desc').value || 'Pesanan Makanan / Belanja';
-                        const total = (cost * qty) * 1.10; // Tax assumption 10%
-
-                        const orderItemData = {
-                            id: (Date.now() + idx).toString(),
-                            type: 'food',
-                            title: title,
-                            category: category, // Enhanced Attribute
-                            day: normalizedDay,
-                            time: inputTime.value,
-                            dest: inputDest.value,
-                            desc: desc,
+                        const qty = parseInt(row.querySelector('.order-qty').value) || 1;
+                        agendaData.orders.push({
+                            title: row.querySelector('.order-title').value,
+                            category: row.querySelector('.order-category').value,
                             qty: qty,
                             cost: cost,
-                            total: total
-                        };
-                        rundownData.push(orderItemData);
+                            total: (cost * qty) * 1.10, // Kalkulasi pajak
+                            desc: row.querySelector('.order-desc').value || ''
+                        });
                     });
                 }
                 
-                saveToStorage();
-                renderFilters(); 
-                renderTimeline();
-                closeModal();
-                showNotification("Agenda berhasil disimpan.");
+                if (inputId.value) {
+                    const index = rundownData.findIndex(i => i.id === inputId.value);
+                    if (index !== -1) rundownData[index] = agendaData;
+                } else {
+                    rundownData.push(agendaData);
+                }
+                
+                saveToStorage(); renderFilters(); renderTimeline();
+                formModal.classList.remove('active');
+                showNotification("Agenda berhasil disimpan");
             });
 
-            // --- EXCEL EXPORT (UPGRADED) ---
             const exportExcel = () => {
-                if(rundownData.length === 0) {
-                    showNotification("Tidak ada data untuk diekspor.");
-                    return;
-                }
-                const excelData = rundownData.map(item => {
-                    let safeTime = item.time;
-                    if(safeTime && safeTime.match(/\d{2}:\d{2}/)) { safeTime = safeTime.match(/\d{2}:\d{2}/)[0]; }
-                    
-                    return {
-                        "Day / Waktu": `${item.day.toLowerCase().includes('hari') ? item.day : 'Hari Ke-'+item.day}`,
-                        "Jam (WITA)": safeTime,
-                        "Jenis Agenda": item.type === 'food' ? 'Makan & Belanja' : 'Perjalanan & Aktivitas',
-                        "Kategori Menu": item.type === 'food' ? (item.category || '-') : "-",
-                        "Judul / Item Pesanan": item.title,
-                        "Lokasi / Resto": item.dest,
-                        "Catatan Tambahan": item.desc,
-                        "Jmlh (Pcs/Org)": item.type === 'food' ? (item.qty || 1) : "-",
-                        "Harga Satuan (Rp)": item.type === 'food' ? (parseFloat(item.cost) || 0) : "-",
-                        "Total Akhir (+10% PPN)": item.type === 'food' ? (parseFloat(item.total) || 0) : "-"
-                    };
-                }).sort((a, b) => {
-                    if (a["Day / Waktu"] === b["Day / Waktu"]) return a["Jam (WITA)"].localeCompare(b["Jam (WITA)"]);
-                    return a["Day / Waktu"].localeCompare(b["Day / Waktu"]);
+                if(rundownData.length === 0) { showNotification("Tidak ada data", true); return; }
+                let excelData = [];
+
+                // Flat mapping agar file XLSX tetap terstruktur (1 Order = 1 Baris di Excel)
+                rundownData.sort((a,b) => a.day.localeCompare(b.day)).forEach(item => {
+                    let safeTime = item.time?.match(/\d{2}:\d{2}/) ? item.time.match(/\d{2}:\d{2}/)[0] : item.time;
+                    let displayDay = item.day.toLowerCase().includes('hari') ? item.day : 'Hari Ke-'+item.day;
+
+                    if (item.type === 'travel') {
+                        excelData.push({
+                            "Day / Waktu": displayDay, "Jam (WITA)": safeTime, "Jenis Agenda": 'Perjalanan & Aktivitas',
+                            "Kategori": "-", "Judul Aktivitas / Menu": item.title, "Lokasi / Resto": item.dest,
+                            "Catatan": item.desc, "Jml(Pcs/Org)": "-", "Harga Satuan(Rp)": "-", "Total Akhir(+10% PPN)": "-"
+                        });
+                    } else if (item.type === 'food' && item.orders) {
+                        item.orders.forEach(o => {
+                            excelData.push({
+                                "Day / Waktu": displayDay, "Jam (WITA)": safeTime, "Jenis Agenda": 'Makan & Belanja',
+                                "Kategori": o.category, "Judul Aktivitas / Menu": o.title, "Lokasi / Resto": item.dest,
+                                "Catatan": o.desc, "Jml(Pcs/Org)": o.qty, "Harga Satuan(Rp)": o.cost, "Total Akhir(+10% PPN)": o.total
+                            });
+                        });
+                    }
                 });
 
                 const worksheet = XLSX.utils.json_to_sheet(excelData);
-                worksheet['!cols'] = [
-                    {wch: 15}, {wch: 12}, {wch: 22}, {wch: 15}, {wch: 35}, {wch: 30}, {wch: 40}, {wch: 15}, {wch: 20}, {wch: 25}
-                ];
-
+                worksheet['!cols'] = [{wch:15}, {wch:12}, {wch:22}, {wch:18}, {wch:35}, {wch:30}, {wch:35}, {wch:12}, {wch:20}, {wch:25}];
                 const workbook = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(workbook, worksheet, "AXA_Rundown_Financials");
+                XLSX.utils.book_append_sheet(workbook, worksheet, "Rundown_Financials");
                 XLSX.writeFile(workbook, "AXA_Exclusive_Itinerary.xlsx");
             };
 
             document.getElementById('btnExportExcel').addEventListener('click', exportExcel);
-            document.getElementById('footerExportBtn').addEventListener('click', (e) => { e.preventDefault(); exportExcel(); });
-
-            window.addEventListener('click', (e) => {
-                if (e.target === formModal) closeModal();
-                if (e.target === confirmModal) closeConfirmModal();
-            });
 
             renderFilters();
             renderTimeline();
