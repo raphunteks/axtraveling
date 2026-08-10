@@ -1,30 +1,18 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <!-- ========================================== -->
+    <!-- SEO & META TAGS (ENTERPRISE STANDARD)      -->
+    <!-- ========================================== -->
     <title>AXA Timeline Traveling - Exclusive Itinerary</title>
     <meta name="description" content="Sistem manajemen rundown dan timeline perjalanan eksklusif dari AXA. Kelola jadwal, destinasi, dan itinerary dengan elegan.">
     <meta name="keywords" content="AXA, Timeline, Traveling, Itinerary, Rundown, Perjalanan Eksklusif, Maksaarsyad">
     <meta name="author" content="AXA Group & Maksaarsyad">
     <link rel="canonical" href="https://traveling.maksaarsyad.xyz/">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://traveling.maksaarsyad.xyz/">
-    <meta property="og:title" content="AXA Timeline Traveling - Exclusive Itinerary">
-    <meta property="og:description" content="Sistem manajemen rundown perjalanan eksklusif dari AXA. Terintegrasi dengan portal utama Maksaarsyad Traveling.">
-    <meta property="og:image" content="https://traveling.maksaarsyad.xyz/axalogo.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://traveling.maksaarsyad.xyz/">
-    <meta property="twitter:title" content="AXA Timeline Traveling">
-    <meta property="twitter:description" content="Sistem manajemen rundown perjalanan eksklusif dari AXA.">
-    <meta property="twitter:image" content="https://traveling.maksaarsyad.xyz/axalogo.png">
-
     <link rel="icon" type="image/png" href="/axalogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,190 +20,363 @@
     
     <style>
         :root {
-            --color-primary: transparent;
-            --color-accent: #3B82F6; 
-            --color-accent-glow: rgba(59, 130, 246, 0.15);
-            --color-food: #F59E0B;
-            --color-canvas: #161512;
-            --color-surface: #050505;
-            --color-border: #333333;
-            --color-text-main: #d8d6c6;
-            --color-text-muted: #6B7280;
+            /* Core Backgrounds */
+            --bg-deep: #06070a;
+            --bg-neu: #0a0c12;
             
+            /* Glassmorphism */
+            --glass-bg: rgba(14, 16, 24, 0.45);
+            --glass-bg-hover: rgba(20, 24, 38, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+            --blur-md: blur(16px);
+            --blur-lg: blur(24px);
+
+            /* Neumorphism (Inner & Outer) */
+            --neu-in: inset 4px 4px 10px rgba(0,0,0,0.7), inset -2px -2px 6px rgba(255,255,255,0.03);
+            --neu-out: 5px 5px 12px rgba(0,0,0,0.5), -3px -3px 8px rgba(255,255,255,0.02);
+            --neu-active: inset 6px 6px 12px rgba(0,0,0,0.8), inset -2px -2px 5px rgba(255,255,255,0.01);
+            
+            /* Holographic & Accents */
+            --holo-cyan: #00f2fe;
+            --holo-blue: #4facfe;
+            --holo-magenta: #f093fb;
+            --holo-food: #f59e0b;
+            --holo-grad: linear-gradient(135deg, var(--holo-cyan) 0%, var(--holo-blue) 50%, var(--holo-magenta) 100%);
+            --holo-grad-food: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            --holo-glow: 0 0 20px rgba(79, 172, 254, 0.4);
+            --holo-glow-strong: 0 0 30px rgba(79, 172, 254, 0.6);
+
+            /* Typography */
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
             --font-heading: 'Ibarra Real Nova', serif;
             --font-body: 'Poppins', sans-serif;
             
-            --radius-sm: 4px;
-            --radius-md: 15px;
-            --radius-lg: 50%;
-            
-            --shadow-sm: rgba(255, 255, 255, 0.05) 0px 0px 5px 0px inset;
-            --shadow-md: rgba(255, 255, 255, 0.1) 0px 0px 10px 0px inset;
-            --shadow-lg: rgba(0, 0, 0, 0.8) 0px 20px 60px 0px;
-            --shadow-glow: 0 0 20px var(--color-accent-glow);
-
-            --transition-speed: 0.3s;
-            --transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
-            --layout-max-width: 1280px;
+            /* Shapes */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-round: 50%;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--color-canvas); color: var(--color-text-main); font-family: var(--font-body); font-size: 16px; font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; position: relative; }
-        body::before { content: ''; position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vw; background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%); z-index: -1; pointer-events: none; opacity: 0.7; }
-
-        h1, h2, h3, h4, .logo-text { font-family: var(--font-heading); color: var(--color-text-main); }
-        .display-title { font-size: clamp(48px, 5vw, 84px); font-weight: 500; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
-        .section-title { font-size: clamp(36px, 4vw, 54px); font-weight: 300; line-height: 1.2; margin-bottom: 48px; text-align: center; }
-        .container { max-width: var(--layout-max-width); margin: 0 auto; padding: 32px 24px; }
-
-        .header { position: sticky; top: 0; z-index: 50; background: rgba(22, 21, 18, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap; gap: 16px; }
-        .brand { display: flex; align-items: center; gap: 16px; }
-        .brand-logo { height: 36px; object-fit: contain; }
-        .logo-text { font-size: 24px; font-weight: 600; letter-spacing: 1px; }
-        .nav-links { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-        .nav-link { background: none; border: none; color: var(--color-text-muted); font-family: var(--font-body); font-size: 14px; font-weight: 500; cursor: pointer; padding: 8px 12px; border-radius: var(--radius-sm); transition: all var(--transition-speed) var(--transition-easing); }
-        .nav-link:hover, .nav-link.active { color: var(--color-text-main); background: rgba(255,255,255,0.05); }
-        .nav-link.active { border-bottom: 2px solid var(--color-accent); border-radius: 4px 4px 0 0; }
-
-        .btn { padding: 14px 28px; font-family: var(--font-body); font-size: 15px; font-weight: 500; cursor: pointer; border-radius: var(--radius-md); transition: all var(--transition-speed) var(--transition-easing); color: var(--color-text-main); display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
-        .btn-primary { background: var(--color-primary); border: 1px solid rgba(255,255,255,0.2); box-shadow: var(--shadow-sm); }
-        .btn-primary:hover { background: var(--color-surface); border-color: var(--color-accent); box-shadow: var(--shadow-glow); color: var(--color-accent); transform: translateY(-2px); }
-        .btn-primary:active { transform: scale(0.98); box-shadow: none; }
-        .btn-accent { background: var(--color-accent); border: 1px solid var(--color-accent); color: #fff; }
-        .btn-accent:hover { background: #2563EB; box-shadow: var(--shadow-glow); transform: translateY(-2px); }
-        .btn-ghost { background: transparent; border: 1px solid transparent; color: var(--color-text-muted); }
-        .btn-ghost:hover { border-color: var(--color-border); color: var(--color-text-main); background: rgba(255,255,255,0.03); }
-
-        .hero { padding-top: 120px; padding-bottom: 96px; text-align: center; max-width: 900px; position: relative; margin: 0 auto;}
-        .body-text { color: var(--color-text-muted); max-width: 700px; margin: 0 auto; font-size: 18px; }
-        .hero-actions { margin-top: 48px; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
-
-        .timeline-section { max-width: 800px; padding-bottom: 96px; margin: 0 auto; }
-        .timeline { position: relative; padding-left: 48px; }
-        .timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--color-accent) 0%, var(--color-border) 20%); }
-        .timeline-item { position: relative; margin-bottom: 48px; opacity: 0; transform: translateY(30px); }
-        .timeline-node { position: absolute; left: -40.5px; top: 32px; width: 16px; height: 16px; border-radius: var(--radius-lg); background-color: var(--color-canvas); border: 2px solid var(--color-text-muted); transition: all var(--transition-speed); z-index: 2; }
         
-        .timeline-item:hover .timeline-node { border-color: var(--color-accent); box-shadow: 0 0 12px var(--color-accent); background: var(--color-accent); }
-        .timeline-item.food-item:hover .timeline-node { border-color: var(--color-food); box-shadow: 0 0 12px var(--color-food); background: var(--color-food); }
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
 
-        .timeline-content { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 32px; box-shadow: var(--shadow-sm); transition: all var(--transition-speed); position: relative; overflow: hidden; }
-        .timeline-content::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--color-accent); opacity: 0; transition: opacity 0.3s; }
-        .timeline-content:hover { transform: translateX(8px); box-shadow: var(--shadow-md); border-color: rgba(59, 130, 246, 0.3); }
-        .timeline-content:hover::before { opacity: 1; }
-        .timeline-item.food-item .timeline-content::before { background: var(--color-food); }
-        .timeline-item.food-item .timeline-content:hover { border-color: rgba(245, 158, 11, 0.3); }
+        /* Ambient Holographic Orbs */
+        .ambient-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; pointer-events: none;
+        }
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+        .orb-1 { width: 40vw; height: 40vw; background: var(--holo-blue); top: -10%; left: -10%; animation-delay: 0s; }
+        .orb-2 { width: 35vw; height: 35vw; background: var(--holo-magenta); bottom: -10%; right: -5%; animation-delay: -5s; }
+        .orb-3 { width: 30vw; height: 30vw; background: var(--holo-cyan); top: 40%; left: 40%; animation-delay: -10s; opacity: 0.2; }
 
-        .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; flex-wrap: wrap; gap: 12px;}
-        .time-badge { font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--color-accent); }
-        .timeline-item.food-item .time-badge { color: var(--color-food); }
-        .timeline-content h3 { font-size: 28px; margin-bottom: 12px; line-height: 1.3; }
-        .timeline-content p { color: var(--color-text-muted); font-size: 15px; margin-bottom: 24px; }
-        .tag-location { display: inline-flex; align-items: center; font-size: 13px; color: var(--color-text-main); opacity: 0.8; background: rgba(255,255,255,0.05); padding: 6px 12px; border-radius: 20px; }
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, 10%) scale(1.1); }
+            100% { transform: translate(-5%, -5%) scale(0.9); }
+        }
 
-        .action-icons { display: flex; gap: 8px; }
-        .icon-btn { background: rgba(255,255,255,0.05); border: 1px solid transparent; border-radius: 8px; color: var(--color-text-muted); cursor: pointer; transition: all 0.2s; padding: 8px; display: flex; align-items: center; justify-content: center; }
-        .icon-btn:hover { color: var(--color-text-main); background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
-        .btn-delete:hover { color: #ef4444; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.1); }
+        /* Typography & Utilities */
+        h1, h2, h3, h4, .logo-text { font-family: var(--font-heading); }
+        .holo-text {
+            background: var(--holo-grad); -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; text-shadow: 0 0 30px rgba(0, 242, 254, 0.2);
+        }
+        .display-title { font-size: clamp(40px, 6vw, 84px); font-weight: 600; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
+        .section-title { font-size: clamp(28px, 4vw, 48px); font-weight: 500; line-height: 1.2; margin-bottom: 40px; }
+        .body-text { color: var(--text-muted); font-size: clamp(15px, 2vw, 18px); font-weight: 300; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 24px; }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; z-index: 99; opacity: 0; visibility: hidden; transition: all var(--transition-speed); padding: 16px; }
+        .header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(6, 7, 10, 0.6); backdrop-filter: var(--blur-md); -webkit-backdrop-filter: var(--blur-md);
+            border-bottom: 1px solid var(--glass-border); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 16px 24px; flex-wrap: wrap; gap: 16px; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand-logo { height: 32px; object-fit: contain; filter: drop-shadow(0 0 8px rgba(255,255,255,0.2)); }
+        
+        .sync-badge {
+            font-size: 11px; font-family: var(--font-body); font-weight: 500;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            padding: 4px 12px; border-radius: 20px; color: var(--text-muted);
+            display: flex; align-items: center; gap: 6px; box-shadow: var(--neu-out);
+        }
+        
+        .nav-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        
+        /* Neumorphic/Glass Toggle Buttons */
+        .nav-link {
+            background: var(--glass-bg); border: 1px solid var(--glass-border); color: var(--text-muted);
+            font-size: 13px; font-weight: 500; cursor: pointer; padding: 8px 16px; border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: var(--neu-out);
+        }
+        .nav-link:hover { color: var(--text-main); transform: translateY(-2px); border-color: rgba(255,255,255,0.2); }
+        .nav-link.active {
+            background: var(--holo-grad); color: #000; font-weight: 600;
+            border: none; box-shadow: var(--holo-glow);
+        }
+
+        .btn {
+            padding: 14px 28px; font-family: var(--font-body); font-size: 14px; font-weight: 500;
+            cursor: pointer; border-radius: var(--radius-md); transition: all 0.3s ease;
+            display: inline-flex; align-items: center; justify-content: center; text-decoration: none; border: none;
+            letter-spacing: 0.5px;
+        }
+        .btn-primary {
+            background: var(--holo-grad); color: #000;
+            box-shadow: var(--neu-out), var(--holo-glow); font-weight: 600;
+        }
+        .btn-primary:hover { box-shadow: var(--neu-out), var(--holo-glow-strong); transform: translateY(-3px) scale(1.02); }
+        .btn-primary:active { transform: translateY(0) scale(0.98); box-shadow: var(--neu-active); }
+
+        .btn-ghost {
+            background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--glass-border);
+            backdrop-filter: var(--blur-md); box-shadow: var(--neu-out);
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .btn-ghost:active { box-shadow: var(--neu-active); transform: translateY(0); }
+
+        .hero { padding: 10vh 24px; text-align: center; max-width: 900px; position: relative; margin: 0 auto; display: flex; flex-direction: column; align-items: center;}
+        .hero-actions { margin-top: 40px; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; }
+
+        .timeline-section { max-width: 900px; padding-bottom: 96px; margin: 0 auto; }
+        .timeline { position: relative; padding-left: 40px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px;
+            background: linear-gradient(to bottom, var(--holo-cyan), var(--holo-magenta));
+            border-radius: 2px; opacity: 0.5;
+        }
+
+        .timeline-item { position: relative; margin-bottom: 40px; opacity: 0; transform: translateY(30px); }
+        
+        .timeline-node {
+            position: absolute; left: -32px; top: 28px; width: 14px; height: 14px;
+            border-radius: var(--radius-round); background: var(--bg-deep);
+            border: 2px solid var(--holo-cyan); box-shadow: 0 0 10px var(--holo-cyan);
+            transition: all 0.4s ease; z-index: 2;
+        }
+        .timeline-item:hover .timeline-node { background: var(--holo-cyan); transform: scale(1.3); }
+        .timeline-item.food-item .timeline-node { border-color: var(--holo-food); box-shadow: 0 0 10px var(--holo-food); }
+        .timeline-item.food-item:hover .timeline-node { background: var(--holo-food); }
+
+        .timeline-content {
+            background: var(--glass-bg); backdrop-filter: var(--blur-lg); -webkit-backdrop-filter: var(--blur-lg);
+            border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 32px;
+            box-shadow: var(--glass-shadow); transition: all 0.4s ease; position: relative; overflow: hidden;
+        }
+        /* Holographic Edge Glow */
+        .timeline-content::after {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+            background: var(--holo-grad); opacity: 0; transition: opacity 0.4s;
+        }
+        .timeline-content:hover {
+            transform: translateX(8px); border-color: rgba(255,255,255,0.15);
+            box-shadow: var(--glass-shadow), 0 10px 40px rgba(0, 242, 254, 0.1);
+        }
+        .timeline-content:hover::after { opacity: 1; }
+        
+        .timeline-item.food-item .timeline-content::after { background: var(--holo-grad-food); }
+
+        .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;}
+        .time-badge { font-family: var(--font-heading); font-size: 24px; font-weight: 600; color: var(--text-main); }
+        
+        .action-icons { display: flex; gap: 12px; }
+        .icon-btn {
+            background: var(--bg-neu); border: none; border-radius: var(--radius-round);
+            color: var(--text-muted); cursor: pointer; transition: all 0.3s;
+            width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--neu-out);
+        }
+        .icon-btn:hover { color: var(--holo-cyan); box-shadow: var(--neu-in); }
+        .btn-delete:hover { color: #ef4444; }
+
+        /* Tag Label Container Glass */
+        .tag-glass {
+            display: inline-flex; align-items: center; font-size: 13px; font-weight: 500;
+            background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);
+            padding: 6px 14px; border-radius: 20px; box-shadow: inset 0 0 10px rgba(255,255,255,0.02);
+            color: var(--text-main);
+        }
+
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center; z-index: 999;
+            opacity: 0; visibility: hidden; transition: all 0.4s ease; padding: 16px;
+        }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: var(--color-canvas); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 48px 32px; width: 100%; max-width: 650px; box-shadow: var(--shadow-lg); transform: translateY(30px) scale(0.95); transition: all var(--transition-speed); max-height: 90vh; overflow-y: auto; }
-        .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
-
-        .standard-form { background: transparent; }
-        .form-group { margin-bottom: 24px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--color-text-muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
-        .form-control { width: 100%; padding: 0px 0px 12px 0px; background: transparent; border: none; border-bottom: 1px solid rgba(255,255,255,0.2); border-radius: 0; color: var(--color-text-main); font-family: var(--font-body); font-size: 18px; font-weight: 300; transition: all var(--transition-speed); color-scheme: dark; }
-        .form-control:focus { outline: none; border-bottom-color: var(--color-accent); box-shadow: 0 4px 2px -2px rgba(59, 130, 246, 0.3); }
-        .form-control::placeholder { color: var(--color-text-muted); opacity: 0.4; }
-        .form-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 40px; }
-
-        .modal-tab-btn { background: transparent; border: none; border-bottom: 2px solid transparent; color: var(--color-text-muted); cursor: pointer; padding: 8px 16px; font-size: 14px; font-weight: 500; font-family: var(--font-body); transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px; }
-        .modal-tab-btn:hover { color: var(--color-text-main); }
-        .modal-tab-btn.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
-        .modal-tab-btn[data-tabtype="food"].active { color: var(--color-food); border-bottom-color: var(--color-food); }
         
-        .order-item-row { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; margin-bottom: 16px; position: relative; }
-        .remove-order-btn { position: absolute; top: 12px; right: 12px; background: rgba(239, 68, 68, 0.1); border: none; color: #ef4444; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: background 0.2s; }
-        .remove-order-btn:hover { background: rgba(239, 68, 68, 0.25); }
+        .modal-content {
+            background: var(--glass-bg); backdrop-filter: var(--blur-lg); -webkit-backdrop-filter: var(--blur-lg);
+            border: 1px solid var(--glass-border); border-radius: var(--radius-lg); padding: 40px 32px;
+            width: 100%; max-width: 650px; box-shadow: var(--glass-shadow), 0 20px 60px rgba(0,0,0,0.8);
+            transform: translateY(40px) scale(0.95); transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: 90vh; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--glass-border) transparent;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
+        
+        /* Neumorphic Form Controls */
+        .form-group { margin-bottom: 24px; }
+        .form-group label {
+            display: block; font-size: 12px; font-weight: 500; color: var(--text-muted);
+            margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px;
+        }
+        .form-control {
+            width: 100%; padding: 14px 16px; background: var(--bg-neu); border: 1px solid transparent;
+            border-radius: var(--radius-md); color: var(--text-main); font-family: var(--font-body);
+            font-size: 15px; font-weight: 400; transition: all 0.3s; color-scheme: dark;
+            box-shadow: var(--neu-in);
+        }
+        .form-control:focus {
+            outline: none; border-color: rgba(0, 242, 254, 0.4);
+            box-shadow: var(--neu-in), 0 0 15px rgba(0, 242, 254, 0.1);
+        }
+        .form-control::placeholder { color: rgba(255,255,255,0.2); }
 
-        .empty-state { text-align: center; padding: 64px 24px; border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md); background: rgba(255,255,255,0.02); }
+        /* Modern Toggle Tabs */
+        .tab-container {
+            display: flex; gap: 12px; margin-bottom: 32px; background: var(--bg-neu);
+            padding: 6px; border-radius: var(--radius-md); box-shadow: var(--neu-in);
+        }
+        .modal-tab-btn {
+            flex: 1; background: transparent; border: none; border-radius: 10px;
+            color: var(--text-muted); cursor: pointer; padding: 12px; font-size: 13px;
+            font-weight: 500; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .modal-tab-btn.active {
+            background: var(--glass-bg); color: var(--text-main); box-shadow: var(--neu-out);
+            border: 1px solid var(--glass-border);
+        }
+        .modal-tab-btn[data-tabtype="food"].active { color: var(--holo-food); }
 
-        .custom-alert { position: fixed; top: 20px; right: 20px; background: #10B981; color: white; padding: 16px 24px; border-radius: 8px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.5); transform: translateX(120%); transition: transform 0.3s ease; font-weight: 500; }
-        .custom-alert.error { background: #EF4444; }
-        .custom-alert.show { transform: translateX(0); }
+        /* Neumorphic Multiple Order Row */
+        .order-item-row {
+            background: rgba(255,255,255,0.01); border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md); padding: 24px; margin-bottom: 20px; position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .remove-order-btn {
+            position: absolute; top: -10px; right: -10px; background: #ef4444; border: none; color: white;
+            width: 28px; height: 28px; border-radius: 50%; cursor: pointer; display: flex; align-items: center;
+            justify-content: center; font-size: 16px; box-shadow: var(--neu-out); transition: transform 0.2s;
+        }
+        .remove-order-btn:hover { transform: scale(1.1); }
 
-        .footer { background: var(--color-surface); border-top: 1px solid var(--color-border); padding: 64px 0 32px 0; margin-top: 64px; }
-        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 48px; margin-bottom: 48px; }
-        .footer-col h4 { font-size: 20px; margin-bottom: 24px; color: var(--color-text-main); }
-        .footer-col p, .footer-col a { color: var(--color-text-muted); font-size: 14px; margin-bottom: 12px; display: block; text-decoration: none; }
-        .footer-col a:hover { color: var(--color-accent); }
+        /* Custom Alert Notification */
+        .custom-alert {
+            position: fixed; top: 24px; left: 50%; transform: translate(-50%, -150%);
+            background: rgba(16, 185, 129, 0.1); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(16, 185, 129, 0.3); color: #34d399; padding: 14px 24px;
+            border-radius: 30px; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); font-weight: 500;
+            display: flex; align-items: center; gap: 10px; font-size: 14px;
+        }
+        .custom-alert.error { background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); color: #f87171; }
+        .custom-alert.show { transform: translate(-50%, 0); }
+        
+        .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid rgba(255,255,255,0.2); border-top-color: currentColor; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            .display-title { font-size: 36px; }
+            .timeline { padding-left: 24px; }
+            .timeline::before { left: 8px; }
+            .timeline-node { left: -21px; width: 12px; height: 12px; top: 32px;}
+            .timeline-content { padding: 24px 20px; }
+            .hero { padding-top: 8vh; }
+            .nav-container { justify-content: center; }
+            .modal-content { padding: 32px 20px; border-radius: 20px; }
+            .form-actions { flex-direction: column; }
+            .btn { width: 100%; }
+        }
     </style>
 </head>
 <body>
+
+    <!-- Holographic Ambient Background -->
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
 
     <header class="header">
         <div class="container nav-container">
             <div class="brand">
                 <img src="/axalogo.png" alt="AXA" class="brand-logo" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/512px-AXA_Logo.svg.png'; this.onerror=null;">
                 <h2 class="logo-text">TIMELINE</h2>
+                <div id="syncBadge" class="sync-badge">✅ Tersinkron</div>
             </div>
-            <nav class="nav-links" id="filterNav">
-                <div id="dynamicFilters" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
-                    <button class="nav-link active" data-day="all">Semua Jadwal</button>
+            <nav class="nav-links">
+                <div id="dynamicFilters" style="display: flex; overflow-x: auto; scrollbar-width: none; gap: 8px; padding-bottom: 4px; align-items: center; max-width: 100%;">
+                    <!-- Filter generated via JS -->
+                    <button class="nav-link active" data-day="all">Semua</button>
                 </div>
-                <a href="https://traveling.maksaarsyad.xyz/" target="_blank" class="btn btn-accent" style="padding: 8px 16px; font-size: 13px; margin-left: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
-                    Portal Utama
-                </a>
             </nav>
         </div>
     </header>
 
     <main class="main-content">
         <section class="hero container">
-            <h1 class="display-title">Exclusive Journey</h1>
+            <h1 class="display-title holo-text">Exclusive Journey</h1>
             <p class="body-text">
-                Kelola rundown perjalanan eksklusif Anda dengan presisi. Sistem arsitektur manajemen itinerary AXA dirancang untuk memberikan pengalaman tanpa hambatan dari keberangkatan hingga kepulangan.
+                Arsitektur manajemen itinerary eksklusif dengan kapabilitas <i>cloud sync</i>. Kelola rundown perjalanan dengan presisi antarmuka futuristik.
             </p>
             <div class="hero-actions">
-                <button class="btn btn-primary" id="btnOpenAddModal">Tambah Agenda</button>
+                <button class="btn btn-primary" id="btnOpenAddModal">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                    Tambah Agenda
+                </button>
                 <button class="btn btn-ghost" id="btnExportExcel">
                     <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 8px;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Export to XLSX
+                    Export XLSX
                 </button>
             </div>
         </section>
 
         <section class="timeline-section container">
             <div class="timeline" id="timelineContainer">
-                <!-- Timeline Items di-generate oleh JS -->
+                <!-- Data will be injected dynamically via JS -->
             </div>
         </section>
     </main>
 
-    <!-- Modal: Form CRUD -->
     <div class="modal-overlay" id="formModal">
-        <div class="modal-content" style="padding-top: 32px;">
-            <h2 class="section-title" id="modalTitle" style="margin-bottom: 24px; font-size: 32px; text-align: left;">Tambah Agenda</h2>
+        <div class="modal-content">
+            <h2 class="section-title holo-text" id="modalTitle" style="margin-bottom: 24px; font-size: 32px; text-align: left;">Tambah Agenda</h2>
             
-            <div style="display: flex; gap: 8px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
-                <button type="button" class="modal-tab-btn active" data-tabtype="travel">🛫 Agenda Perjalanan</button>
-                <button type="button" class="modal-tab-btn" data-tabtype="food">🛍️ Makan & Belanja</button>
+            <div class="tab-container">
+                <button type="button" class="modal-tab-btn active" data-tabtype="travel">🛫 Perjalanan</button>
+                <button type="button" class="modal-tab-btn" data-tabtype="food">🛍️ Resto/Belanja</button>
             </div>
 
-            <form id="rundownForm" class="standard-form">
+            <form id="rundownForm">
                 <input type="hidden" id="agendaId">
                 <input type="hidden" id="agendaType" value="travel">
 
                 <!-- COMMON FIELDS -->
-                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-                    <div class="form-group" style="flex: 1; min-width: 150px;">
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <div class="form-group" style="flex: 1; min-width: 140px;">
                         <label>Hari Ke-</label>
-                        <input type="text" id="agendaDay" class="form-control" placeholder="Cth: 4 atau Hari 4" required style="background: var(--color-canvas);">
+                        <input type="text" id="agendaDay" class="form-control" placeholder="Cth: Hari 4" required>
                     </div>
-                    <div class="form-group" style="flex: 1; min-width: 150px;">
+                    <div class="form-group" style="flex: 1; min-width: 140px;">
                         <label>Waktu (WITA)</label>
                         <input type="time" id="agendaTime" class="form-control" required>
                     </div>
@@ -223,7 +384,7 @@
 
                 <div class="form-group">
                     <label id="lblDest">Destinasi / Lokasi Umum</label>
-                    <input type="text" id="agendaDest" class="form-control" placeholder="Detail lokasi..." required>
+                    <input type="text" id="agendaDest" class="form-control" placeholder="Nama lokasi..." required>
                 </div>
 
                 <!-- TRAVEL SPECIFIC FIELD -->
@@ -234,47 +395,53 @@
                     </div>
                     <div class="form-group">
                         <label>Deskripsi Detail</label>
-                        <input type="text" id="agendaDescTravel" class="form-control" placeholder="Catatan penting untuk peserta...">
+                        <input type="text" id="agendaDescTravel" class="form-control" placeholder="Catatan untuk peserta...">
                     </div>
                 </div>
 
-                <!-- FOOD & SHOPPING MULTIPLE ORDERS (Nested) -->
+                <!-- FOOD & SHOPPING MULTIPLE ORDERS -->
                 <div id="foodSpecificContainer" style="display: none;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-                        <label style="font-size: 13px; font-weight: 500; color: var(--color-food); text-transform: uppercase; letter-spacing: 1px;">Daftar Pesanan & Outlet</label>
-                        <button type="button" id="btnAddMoreOrder" class="btn btn-ghost" style="padding: 6px 12px; font-size: 13px; border-color: var(--color-food); color: var(--color-food);">+ Order Lain</button>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                        <label style="font-size: 13px; font-weight: 600; color: var(--holo-food); margin-bottom: 0;">Daftar Pesanan Menu</label>
+                        <button type="button" id="btnAddMoreOrder" class="btn-ghost" style="padding: 6px 14px; font-size: 12px; border-radius: 20px; border-color: var(--holo-food); color: var(--holo-food); display: flex; align-items: center; cursor: pointer; background: transparent;">
+                            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-right:4px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path></svg>
+                            Order Baru
+                        </button>
                     </div>
                     <div id="orderItemsWrapper">
-                        <!-- Dynamic Order Rows di-generate oleh JS -->
+                        <!-- Dynamic Order Rows Injected Here -->
                     </div>
                 </div>
                 
-                <div class="form-actions">
-                    <button type="button" class="btn btn-ghost" id="btnCancelModal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Simpan Agenda</button>
+                <div class="form-actions" style="margin-top: 40px; display: flex; gap: 16px;">
+                    <button type="button" class="btn btn-ghost" id="btnCancelModal" style="flex: 1;">Batal</button>
+                    <button type="submit" class="btn btn-primary" id="btnSaveSubmit" style="flex: 2;">Simpan Agenda</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Modal: Delete Confirmation -->
     <div class="modal-overlay" id="confirmModal">
-        <div class="modal-content" style="text-align: center; max-width: 450px; padding: 40px 32px;">
-            <div style="width: 80px; height: 80px; background: rgba(239, 68, 68, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+        <div class="modal-content" style="text-align: center; max-width: 400px; padding: 48px 32px;">
+            <div style="width: 80px; height: 80px; background: rgba(239, 68, 68, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; box-shadow: var(--neu-in); border: 1px solid rgba(239,68,68,0.2);">
                 <svg width="40" height="40" fill="none" stroke="#ef4444" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
             </div>
-            <h2 class="section-title" style="margin-bottom: 16px; font-size: 28px;">Hapus Data?</h2>
-            <p class="body-text" style="color: var(--color-text-muted); font-size: 15px; margin-bottom: 32px;">
+            <h2 class="section-title" style="margin-bottom: 16px; font-size: 24px;">Hapus Permanen?</h2>
+            <p class="body-text" style="font-size: 14px; margin-bottom: 32px;">
                 Tindakan ini permanen. Seluruh data pesanan di dalam agenda ini akan ikut terhapus.
             </p>
-            <div class="form-actions" style="justify-content: center; margin-top: 0; gap: 16px;">
-                <button type="button" class="btn btn-ghost" id="btnCancelDelete">Batalkan</button>
-                <button type="button" class="btn btn-primary" id="btnConfirmDelete" style="background: #ef4444; border-color: #ef4444; color: white;">Ya, Hapus</button>
+            <div style="display: flex; gap: 12px;">
+                <button type="button" class="btn btn-ghost" id="btnCancelDelete" style="flex: 1;">Batal</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmDelete" style="flex: 1; background: #ef4444; box-shadow: 0 0 20px rgba(239, 68, 68, 0.4); color: white;">Hapus</button>
             </div>
         </div>
     </div>
     
-    <div id="customAlert" class="custom-alert"></div>
+    <!-- Custom Top Notification -->
+    <div id="customAlert" class="custom-alert">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span id="customAlertMsg">Notifikasi</span>
+    </div>
 
     <script type="module">
         import * as XLSX from 'https://cdn.sheetjs.com/xlsx-0.18.5/package/xlsx.mjs';
@@ -283,21 +450,42 @@
             const STORAGE_KEY = 'axa_premium_rundown';
             const GAS_API_URL = "https://script.google.com/macros/s/AKfycbx6Of-Ochxpzaw-xwWCW46zwQQ90g4SJJ-tX8dMn5kJTtK_FXWszYyIyCcAqdex1YeD/exec";
             
-            // State Aplikasi (Grouping Mode)
             let rundownData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
             let currentFilter = 'all';
             let itemToDeleteId = null;
 
+            const formatRp = (num) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
+            const generateId = () => Date.now().toString() + '-' + Math.floor(Math.random() * 1000);
+
             function showNotification(msg, isError = false) {
                 const box = document.getElementById('customAlert');
-                box.textContent = msg;
-                if(isError) box.classList.add('error'); else box.classList.remove('error');
+                document.getElementById('customAlertMsg').textContent = msg;
+                if(isError) {
+                    box.classList.add('error');
+                    box.querySelector('svg').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>';
+                } else {
+                    box.classList.remove('error');
+                    box.querySelector('svg').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
+                }
                 box.classList.add('show');
-                setTimeout(() => box.classList.remove('show'), 3000);
+                setTimeout(() => box.classList.remove('show'), 3500);
+            }
+
+            function setSyncingState(isSyncing) {
+                const badge = document.getElementById('syncBadge');
+                if (isSyncing) {
+                    badge.innerHTML = '<span class="spinner"></span> Syncing...';
+                    badge.style.color = 'var(--holo-cyan)';
+                } else {
+                    badge.innerHTML = '✅ Cloud Ready';
+                    badge.style.color = 'var(--text-muted)';
+                }
             }
 
             function saveToStorage() {
                 localStorage.setItem(STORAGE_KEY, JSON.stringify(rundownData));
+                setSyncingState(true);
+                
                 fetch(GAS_API_URL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -305,37 +493,43 @@
                 })
                 .then(res => res.json())
                 .then(resp => {
-                    if(resp.status === 'success') showNotification("Tersinkronisasi dengan Cloud Sheet");
+                    setSyncingState(false);
+                    if(resp.status === 'success') showNotification("Data tersimpan ke Cloud");
                 })
                 .catch(err => {
+                    setSyncingState(false);
                     console.error("Cloud Sync Failed:", err);
-                    showNotification("Gagal sinkronisasi ke Cloud", true);
+                    showNotification("Offline mode. Tersimpan di memori perangkat.", true);
                 });
             }
 
             function fetchFromCloud() {
+                setSyncingState(true);
                 fetch(GAS_API_URL)
                     .then(res => res.json())
                     .then(data => {
+                        setSyncingState(false);
                         if(data && Array.isArray(data)) {
-                            // Algoritma Grouping: Code.gs mereturn data Flat, Web menggabungkannya kembali (Parent-Child)
+                            // Smart unflatten: Group incoming flat arrays back to Parent-Child
                             let groupedData = [];
                             let foodMap = {};
 
                             data.forEach(row => {
                                 if(row.type === 'travel') {
-                                    groupedData.push(row); // Travel tetap normal
+                                    groupedData.push({
+                                        id: row.id, type: 'travel', day: row.day, time: row.time,
+                                        dest: row.dest, title: row.title, desc: row.desc
+                                    });
                                 } else if (row.type === 'food') {
                                     if(!foodMap[row.id]) {
-                                        // Buat Parent Agenda Baru
                                         foodMap[row.id] = {
                                             id: row.id, type: 'food', day: row.day, time: row.time, dest: row.dest,
                                             orders: []
                                         };
                                         groupedData.push(foodMap[row.id]);
                                     }
-                                    // Masukkan anak-anak pesanannya
                                     foodMap[row.id].orders.push({
+                                        id: row.order_id || generateId(),
                                         category: row.item_category || 'Lainnya',
                                         title: row.item_title || '',
                                         desc: row.item_desc || '',
@@ -351,7 +545,10 @@
                             renderTimeline(); 
                         }
                     })
-                    .catch(err => console.error("Failed fetching data from Cloud:", err));
+                    .catch(err => {
+                        setSyncingState(false);
+                        console.error("Failed fetching data:", err);
+                    });
             }
 
             const timelineContainer = document.getElementById('timelineContainer');
@@ -369,9 +566,6 @@
             const btnAddMoreOrder = document.getElementById('btnAddMoreOrder');
             const modalTabBtns = document.querySelectorAll('.modal-tab-btn');
 
-            const formatRp = (num) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
-
-            // Row Template untuk Order (Anak)
             function addOrderRow(data = {}) {
                 const row = document.createElement('div');
                 row.className = 'order-item-row';
@@ -381,42 +575,45 @@
                 const cSnk = data.category === 'Snack' ? 'selected' : '';
                 const cLain = data.category === 'Belanja/Lainnya' ? 'selected' : '';
 
+                // UI Updated with Neumorphic Inputs and layout tweaks
                 row.innerHTML = `
-                    <button type="button" class="remove-order-btn" title="Hapus Item">&times;</button>
+                    <button type="button" class="remove-order-btn" title="Hapus Order"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+                    <input type="hidden" class="order-id" value="${data.id || ''}">
+                    
                     <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;">
-                        <div class="form-group" style="flex: 1; min-width: 130px; margin-bottom:0;">
-                            <label style="font-size: 11px;">Kategori</label>
-                            <select class="form-control order-category" required style="background: var(--color-canvas); font-size: 14px; padding-bottom:10px;">
-                                <option value="Makanan" ${cMak}>Makanan</option>
-                                <option value="Minuman" ${cMin}>Minuman</option>
-                                <option value="Snack" ${cSnk}>Snack / Dessert</option>
-                                <option value="Belanja/Lainnya" ${cLain}>Belanja / Lain</option>
+                        <div class="form-group" style="flex: 1; min-width: 120px; margin-bottom: 0;">
+                            <label>Kategori</label>
+                            <select class="form-control order-category" required style="cursor:pointer; appearance: none; padding-right:30px; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 14px top 50%; background-size: 10px auto;">
+                                <option value="Makanan" ${cMak} style="color: black;">Makanan</option>
+                                <option value="Minuman" ${cMin} style="color: black;">Minuman</option>
+                                <option value="Snack" ${cSnk} style="color: black;">Snack/Dessert</option>
+                                <option value="Belanja/Lainnya" ${cLain} style="color: black;">Belanja</option>
                             </select>
                         </div>
-                        <div class="form-group" style="flex: 2; min-width: 200px; margin-bottom:0;">
-                            <label style="font-size: 11px;">Menu / Item Pesanan</label>
-                            <input type="text" class="form-control order-title" placeholder="Cth: Kopi Susu" value="${data.title || ''}" required>
+                        <div class="form-group" style="flex: 2; min-width: 180px; margin-bottom: 0;">
+                            <label>Nama Menu/Barang</label>
+                            <input type="text" class="form-control order-title" placeholder="Cth: Wagyu A5" value="${data.title || ''}" required>
                         </div>
                     </div>
                     <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 16px;">
-                        <div class="form-group" style="flex: 1; margin-bottom:0;">
-                            <label style="font-size: 11px;">Jml (Pcs/Org)</label>
+                        <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                            <label>Porsi/Qty</label>
                             <input type="number" class="form-control order-qty" placeholder="1" min="1" value="${data.qty || 1}" required>
                         </div>
-                        <div class="form-group" style="flex: 1; margin-bottom:0;">
-                            <label style="font-size: 11px;">Harga Satuan (Rp)</label>
-                            <input type="number" class="form-control order-cost" placeholder="25000" min="0" value="${data.cost || ''}" required>
+                        <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                            <label>Harga Satuan</label>
+                            <input type="number" class="form-control order-cost" placeholder="Rp" min="0" value="${data.cost || ''}" required>
                         </div>
                     </div>
                     <div class="form-group" style="margin-bottom: 0;">
-                        <label style="font-size: 11px;">Catatan (Opsional)</label>
-                        <input type="text" class="form-control order-desc" placeholder="Cth: Less sugar" value="${data.desc || ''}">
+                        <label>Catatan Khusus</label>
+                        <input type="text" class="form-control order-desc" placeholder="Cth: Medium rare" value="${data.desc || ''}">
                     </div>
                 `;
                 
                 row.querySelector('.remove-order-btn').addEventListener('click', () => {
                     if (orderItemsWrapper.children.length > 1) row.remove();
-                    else showNotification("Minimal harus menyisakan 1 pesanan.", true);
+                    else showNotification("Minimal sisakan 1 pesanan di form ini.", true);
                 });
                 orderItemsWrapper.appendChild(row);
             }
@@ -454,7 +651,7 @@
                     return (!isNaN(numA) && !isNaN(numB)) ? numA - numB : a.localeCompare(b);
                 });
 
-                let html = `<button class="nav-link ${currentFilter === 'all' ? 'active' : ''}" data-day="all">Semua Jadwal</button>`;
+                let html = `<button class="nav-link ${currentFilter === 'all' ? 'active' : ''}" data-day="all">Semua Data</button>`;
                 uniqueDays.forEach(day => {
                     const isActive = currentFilter === day ? 'active' : '';
                     html += `<button class="nav-link ${isActive}" data-day="${day}">${day.toString().toLowerCase().includes('hari') ? day : 'Hari '+day}</button>`;
@@ -475,14 +672,14 @@
                 });
 
                 if (filteredData.length === 0) {
-                    timelineContainer.innerHTML = `<div class="empty-state"><h3>Database Kosong</h3><p>Belum ada agenda yang ditambahkan.</p></div>`;
+                    timelineContainer.innerHTML = `<div style="text-align: center; padding: 60px 24px; border: 1px dashed var(--glass-border); border-radius: var(--radius-lg); background: rgba(255,255,255,0.02);"><h3 style="color:var(--text-main); margin-bottom:8px;">Database Kosong</h3><p style="color:var(--text-muted)">Belum ada agenda yang terdaftar. Klik 'Tambah Agenda' untuk memulai.</p></div>`;
                     return;
                 }
 
                 filteredData.forEach((item, index) => {
                     const el = document.createElement('div');
                     el.className = `timeline-item ${item.type === 'food' ? 'food-item' : ''}`;
-                    el.style.transition = `opacity 0.6s ease, transform 0.6s ease ${index * 0.08}s`;
+                    el.style.transition = `opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${index * 0.08}s`;
                     
                     let safeTime = item.time?.match(/\d{2}:\d{2}/) ? item.time.match(/\d{2}:\d{2}/)[0] : item.time;
                     let displayDay = item.day.toString().toLowerCase().includes('hari') ? item.day : `Day ${item.day}`;
@@ -490,40 +687,41 @@
                     let contentHtml = '';
                     
                     if (item.type === 'food') {
-                        // Tampilan NESTED (Grouped Orders)
                         let grandTotal = 0;
                         let ordersListHtml = (item.orders || []).map(o => {
                             grandTotal += parseFloat(o.total || 0);
                             return `
-                                <div style="display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 12px; align-items: flex-start;">
+                                <div style="display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 12px; align-items: flex-start; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 8px;">
                                     <div>
-                                        <strong style="color:var(--color-text-main);">${o.title}</strong> 
-                                        <span style="opacity:0.6; font-size:11px; padding-left:4px;">(${o.category})</span>
-                                        ${o.desc ? `<div style="opacity:0.5; font-size:11px; margin-top:2px;">Catatan: ${o.desc}</div>` : ''}
+                                        <strong style="color:var(--text-main); letter-spacing:0.5px;">${o.title}</strong> 
+                                        <span style="opacity:0.6; font-size:11px; padding-left:4px; font-weight: 300;">(${o.category})</span>
+                                        ${o.desc ? `<div style="opacity:0.5; font-size:12px; margin-top:2px;">Catatan: ${o.desc}</div>` : ''}
                                     </div>
                                     <div style="text-align: right; line-height:1.4;">
-                                        <span style="opacity:0.7;">${o.qty}x @ ${formatRp(o.cost)}</span><br>
-                                        <strong style="color: var(--color-food);">${formatRp(o.total)}</strong>
+                                        <span style="opacity:0.7; font-size: 12px;">${o.qty}x @ ${formatRp(o.cost)}</span><br>
+                                        <strong style="color: var(--holo-food);">${formatRp(o.total)}</strong>
                                     </div>
                                 </div>
                             `;
                         }).join('');
 
                         contentHtml = `
-                            <div style="margin-bottom:20px; padding:20px; background:rgba(245, 158, 11, 0.05); border-radius:12px; border: 1px solid rgba(245, 158, 11, 0.2);">
-                                <h4 style="font-size: 12px; font-family:var(--font-body); margin-bottom: 16px; color: var(--color-food); text-transform:uppercase; letter-spacing:1px; border-bottom: 1px dashed rgba(245, 158, 11, 0.3); padding-bottom: 12px;">Daftar Pesanan Menu</h4>
+                            <div style="margin-top:20px; padding:20px; background: rgba(0,0,0,0.3); border-radius: 12px; box-shadow: var(--neu-in); border: 1px solid rgba(255,255,255,0.02);">
+                                <h4 style="font-size: 11px; font-family:var(--font-body); margin-bottom: 16px; color: var(--holo-food); text-transform:uppercase; letter-spacing:1px; display: flex; align-items: center; gap: 8px;">
+                                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                    List Pesanan
+                                </h4>
                                 ${ordersListHtml}
-                                <div style="display: flex; justify-content: space-between; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 16px; margin-top: 12px; align-items:center;">
-                                    <span style="font-weight: 500; font-size:14px;">Total (+PPN 10%)</span>
-                                    <strong style="color: var(--color-food); font-size: 18px;">${formatRp(grandTotal)}</strong>
+                                <div style="display: flex; justify-content: space-between; padding-top: 12px; margin-top: 8px; align-items:center;">
+                                    <span style="font-weight: 400; font-size:13px; color: var(--text-muted);">Total (Inc. Tax 10%)</span>
+                                    <strong style="color: var(--holo-food); font-size: 18px; text-shadow: 0 0 10px rgba(245,158,11,0.3);">${formatRp(grandTotal)}</strong>
                                 </div>
                             </div>
                         `;
                     } else {
-                        // Tampilan Travel Biasa
                         contentHtml = `
-                            <h3>${item.title}</h3>
-                            <p style="margin-bottom: 16px;">${item.desc}</p>
+                            <h3 style="font-size: 26px; margin-bottom: 12px; font-weight: 500;">${item.title}</h3>
+                            <p style="color: var(--text-muted); margin-bottom: 24px;">${item.desc}</p>
                         `;
                     }
 
@@ -531,20 +729,20 @@
                         <div class="timeline-node"></div>
                         <div class="timeline-content">
                             <div class="timeline-header">
-                                <div>
+                                <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px;">
                                     <span class="time-badge">${displayDay} • ${safeTime} WITA</span>
-                                    ${item.type === 'food' ? `<span style="font-size: 12px; background: rgba(245,158,11,0.1); color: var(--color-food); padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(245,158,11,0.3); margin-left: 8px;">🛍️ Outlet</span>` : ''}
+                                    ${item.type === 'food' ? `<span style="font-size: 11px; font-weight: 500; background: rgba(245,158,11,0.1); color: var(--holo-food); padding: 4px 10px; border-radius: 20px; border: 1px solid rgba(245,158,11,0.3);">🛍️ F&B Outlet</span>` : ''}
                                 </div>
                                 <div class="action-icons">
-                                    <button class="icon-btn btn-edit" data-id="${item.id}" title="Edit"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
-                                    <button class="icon-btn btn-delete" data-id="${item.id}" title="Hapus"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+                                    <button class="icon-btn btn-edit" data-id="${item.id}" title="Edit"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                                    <button class="icon-btn btn-delete" data-id="${item.id}" title="Hapus"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
                                 </div>
                             </div>
-                            ${item.type === 'food' ? `<h3 style="margin-bottom:20px; color:var(--color-text-main);">${item.dest}</h3>` : ''}
+                            ${item.type === 'food' ? `<h3 style="font-size: 24px; margin-bottom:4px; font-weight: 500;">${item.dest}</h3>` : ''}
                             ${contentHtml}
                             ${item.type !== 'food' ? `
-                            <span class="tag-location">
-                                <svg width="16" height="16" fill="none" stroke="var(--color-accent)" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                            <span class="tag-glass">
+                                <svg width="14" height="14" fill="none" stroke="var(--holo-cyan)" stroke-width="2" viewBox="0 0 24 24" style="margin-right: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
                                 ${item.dest}
                             </span>` : ''}
                         </div>
@@ -572,7 +770,7 @@
                         inputDest.value = item.dest;
                         
                         if (item.type === 'food' && item.orders) {
-                            item.orders.forEach(o => addOrderRow(o)); // Load multiple order rows
+                            item.orders.forEach(o => addOrderRow(o));
                         } else {
                             document.getElementById('agendaTitleTravel').value = item.title;
                             document.getElementById('agendaDescTravel').value = item.desc;
@@ -608,7 +806,7 @@
 
                 const activeType = inputType.value;
                 let agendaData = {
-                    id: inputId.value || Date.now().toString(),
+                    id: inputId.value || generateId(),
                     type: activeType,
                     day: normalizedDay,
                     time: inputTime.value,
@@ -619,18 +817,21 @@
                     agendaData.title = document.getElementById('agendaTitleTravel').value;
                     agendaData.desc = document.getElementById('agendaDescTravel').value;
                 } else {
-                    // Logic Parent (Agenda) -> Menyimpan Array of Orders (Anak)
+                    // Logic Parent-Child dgn Kategori & PPN Unik
                     agendaData.orders = [];
                     const rows = orderItemsWrapper.querySelectorAll('.order-item-row');
                     rows.forEach(row => {
                         const cost = parseFloat(row.querySelector('.order-cost').value) || 0;
                         const qty = parseInt(row.querySelector('.order-qty').value) || 1;
+                        const orderIdVal = row.querySelector('.order-id').value;
+                        
                         agendaData.orders.push({
+                            id: orderIdVal ? orderIdVal : generateId(),
                             title: row.querySelector('.order-title').value,
                             category: row.querySelector('.order-category').value,
                             qty: qty,
                             cost: cost,
-                            total: (cost * qty) * 1.10, // Kalkulasi pajak
+                            total: (cost * qty) * 1.10, // Kalkulasi otomatis PPN 10%
                             desc: row.querySelector('.order-desc').value || ''
                         });
                     });
@@ -643,16 +844,17 @@
                     rundownData.push(agendaData);
                 }
                 
-                saveToStorage(); renderFilters(); renderTimeline();
+                saveToStorage(); 
+                renderFilters(); 
+                renderTimeline();
                 formModal.classList.remove('active');
-                showNotification("Agenda berhasil disimpan");
+                showNotification("Agenda berhasil disimpan.");
             });
 
             const exportExcel = () => {
-                if(rundownData.length === 0) { showNotification("Tidak ada data", true); return; }
+                if(rundownData.length === 0) { showNotification("Tidak ada data untuk diekspor", true); return; }
                 let excelData = [];
 
-                // Flat mapping agar file XLSX tetap terstruktur (1 Order = 1 Baris di Excel)
                 rundownData.sort((a,b) => a.day.localeCompare(b.day)).forEach(item => {
                     let safeTime = item.time?.match(/\d{2}:\d{2}/) ? item.time.match(/\d{2}:\d{2}/)[0] : item.time;
                     let displayDay = item.day.toLowerCase().includes('hari') ? item.day : 'Hari Ke-'+item.day;
@@ -661,21 +863,21 @@
                         excelData.push({
                             "Day / Waktu": displayDay, "Jam (WITA)": safeTime, "Jenis Agenda": 'Perjalanan & Aktivitas',
                             "Kategori": "-", "Judul Aktivitas / Menu": item.title, "Lokasi / Resto": item.dest,
-                            "Catatan": item.desc, "Jml(Pcs/Org)": "-", "Harga Satuan(Rp)": "-", "Total Akhir(+10% PPN)": "-"
+                            "Catatan": item.desc, "Jml(Pcs)": "-", "Harga Satuan(Rp)": "-", "Total (+PPN 10%)": "-"
                         });
                     } else if (item.type === 'food' && item.orders) {
                         item.orders.forEach(o => {
                             excelData.push({
                                 "Day / Waktu": displayDay, "Jam (WITA)": safeTime, "Jenis Agenda": 'Makan & Belanja',
                                 "Kategori": o.category, "Judul Aktivitas / Menu": o.title, "Lokasi / Resto": item.dest,
-                                "Catatan": o.desc, "Jml(Pcs/Org)": o.qty, "Harga Satuan(Rp)": o.cost, "Total Akhir(+10% PPN)": o.total
+                                "Catatan": o.desc, "Jml(Pcs)": o.qty, "Harga Satuan(Rp)": o.cost, "Total (+PPN 10%)": o.total
                             });
                         });
                     }
                 });
 
                 const worksheet = XLSX.utils.json_to_sheet(excelData);
-                worksheet['!cols'] = [{wch:15}, {wch:12}, {wch:22}, {wch:18}, {wch:35}, {wch:30}, {wch:35}, {wch:12}, {wch:20}, {wch:25}];
+                worksheet['!cols'] = [{wch:15}, {wch:12}, {wch:22}, {wch:18}, {wch:35}, {wch:30}, {wch:35}, {wch:10}, {wch:20}, {wch:22}];
                 const workbook = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(workbook, worksheet, "Rundown_Financials");
                 XLSX.writeFile(workbook, "AXA_Exclusive_Itinerary.xlsx");
@@ -683,6 +885,7 @@
 
             document.getElementById('btnExportExcel').addEventListener('click', exportExcel);
 
+            // Startup Calls
             renderFilters();
             renderTimeline();
             fetchFromCloud();
