@@ -3,8 +3,6 @@ import * as XLSX from 'https://cdn.sheetjs.com/xlsx-0.18.5/package/xlsx.mjs';
 document.addEventListener('DOMContentLoaded', () => {
     // --- 1. CONFIGURATION & DATABASE INTEGRATION ---
     const STORAGE_KEY = 'axa_premium_rundown';
-    
-    // LINK DATABASE GOOGLE APPS SCRIPT ANDA
     const GAS_API_URL = "https://script.google.com/macros/s/AKfycbx6Of-Ochxpzaw-xwWCW46zwQQ90g4SJJ-tX8dMn5kJTtK_FXWszYyIyCcAqdex1YeD/exec";
     
     let rundownData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -14,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. CLOUD SYNC & STORAGE SYSTEM ---
     function saveToStorage() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(rundownData));
-        
         fetch(GAS_API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -46,15 +43,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmModal = document.getElementById('confirmModal');
     
     const inputId = document.getElementById('agendaId');
+    const inputType = document.getElementById('agendaType'); // Hidden input
     const inputTitle = document.getElementById('agendaTitle');
     const inputDay = document.getElementById('agendaDay');
     const inputTime = document.getElementById('agendaTime');
     const inputDest = document.getElementById('agendaDest');
     const inputDesc = document.getElementById('agendaDesc');
-    
-    // New Elements
     const inputQty = document.getElementById('agendaQty');
     const inputCost = document.getElementById('agendaCost');
+
+    const modalTabBtns = document.querySelectorAll('.modal-tab-btn');
+    const financialFields = document.getElementById('financialFields');
+    const lblTitle = document.getElementById('lblTitle');
+    const lblDest = document.getElementById('lblDest');
+    const lblDesc = document.getElementById('lblDesc');
 
     // Utility: Format Rupiah
     const formatRp = (num) => {
@@ -62,7 +64,42 @@ document.addEventListener('DOMContentLoaded', () => {
         return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num);
     };
 
-    // --- 4. RENDER ENGINE & ANIMATION ---
+    // --- 4. TAB NAVIGATION LOGIC (UI ADAPTATION) ---
+    function switchModalTab(type) {
+        // Reset Active Class
+        modalTabBtns.forEach(btn => btn.classList.remove('active'));
+        document.querySelector(`.modal-tab-btn[data-tabtype="${type}"]`).classList.add('active');
+        
+        inputType.value = type;
+
+        if (type === 'food') {
+            lblTitle.textContent = "Nama Pesanan / Aktivitas";
+            lblDest.textContent = "Nama Resto / Toko / Outlet";
+            lblDesc.textContent = "Catatan Pesanan Khusus";
+            financialFields.style.display = "flex";
+            inputTitle.placeholder = "Cth: Order Kopi Starbucks";
+            inputDest.placeholder = "Cth: Starbucks Reserve";
+            
+        } else {
+            lblTitle.textContent = "Judul Aktivitas";
+            lblDest.textContent = "Destinasi / Lokasi";
+            lblDesc.textContent = "Deskripsi Detail";
+            financialFields.style.display = "none";
+            inputTitle.placeholder = "Cth: Keberangkatan VIP";
+            inputDest.placeholder = "Cth: Terminal 3 Soekarno-Hatta";
+            // Reset input values hidden
+            inputQty.value = "";
+            inputCost.value = "";
+        }
+    }
+
+    modalTabBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            switchModalTab(e.target.dataset.tabtype);
+        });
+    });
+
+    // --- 5. RENDER ENGINE & ANIMATION ---
     const revealObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -131,34 +168,43 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const displayBadgeDay = item.day.toString().toLowerCase().includes('hari') ? item.day : `Day ${item.day}`;
             
-            // Regex Fallback Pengaman Jam dari String Aneh (misal dari sinkronisasi)
+            // Regex Fallback Pengaman Jam
             let safeTime = item.time;
             if(safeTime && safeTime.match(/\d{2}:\d{2}/)) {
                 safeTime = safeTime.match(/\d{2}:\d{2}/)[0];
             }
             
-            // HTML Komponen Biaya (Hanya muncul jika ada biayanya)
+            // Badge & Info Berdasarkan Tipe Tab (Travel vs Food)
+            let badgeTypeIcon = '';
             let costHtml = '';
-            if (item.total && parseFloat(item.total) > 0) {
-                costHtml = `
-                    <div style="margin-bottom:20px; padding:12px; background:rgba(59,130,246,0.05); border-radius:8px; font-size:14px; border: 1px solid rgba(59,130,246,0.2);">
-                        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                            <span style="color:var(--color-text-muted);">Estimasi Biaya:</span> <strong>${formatRp(item.cost)}</strong>
-                        </div>
-                        <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
-                            <span style="color:var(--color-text-muted);">Jumlah (Org/Pcs):</span> <strong>${item.qty}</strong>
-                        </div>
-                        <div style="display:flex; justify-content:space-between; border-top: 1px dashed rgba(255,255,255,0.1); padding-top:8px; margin-top:8px;">
-                            <span style="color:var(--color-text-muted);">Total Tagihan (+ PPN 10%):</span> <strong style="color:var(--color-accent); font-size:16px;">${formatRp(item.total)}</strong>
-                        </div>
-                    </div>`;
+            
+            if (item.type === 'food') {
+                badgeTypeIcon = `<span style="font-size: 12px; background: rgba(245, 158, 11, 0.1); color: #F59E0B; padding: 2px 8px; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.3); margin-left: 8px;">🛍️ Makan / Belanja</span>`;
+                
+                if (item.total && parseFloat(item.total) > 0) {
+                    costHtml = `
+                        <div style="margin-bottom:20px; padding:12px; background:rgba(59,130,246,0.05); border-radius:8px; font-size:14px; border: 1px solid rgba(59,130,246,0.2);">
+                            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                                <span style="color:var(--color-text-muted);">Estimasi Biaya:</span> <strong>${formatRp(item.cost)}</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; margin-bottom:4px;">
+                                <span style="color:var(--color-text-muted);">Jumlah (Org/Pcs):</span> <strong>${item.qty}</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; border-top: 1px dashed rgba(255,255,255,0.1); padding-top:8px; margin-top:8px;">
+                                <span style="color:var(--color-text-muted);">Total Tagihan (+ PPN 10%):</span> <strong style="color:var(--color-accent); font-size:16px;">${formatRp(item.total)}</strong>
+                            </div>
+                        </div>`;
+                }
             }
 
             el.innerHTML = `
                 <div class="timeline-node"></div>
                 <div class="timeline-content">
                     <div class="timeline-header">
-                        <span class="time-badge">${displayBadgeDay} • ${safeTime} WITA</span>
+                        <div>
+                            <span class="time-badge">${displayBadgeDay} • ${safeTime} WITA</span>
+                            ${badgeTypeIcon}
+                        </div>
                         <div class="action-icons">
                             <button class="icon-btn btn-edit" data-id="${item.id}" title="Edit">
                                 <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
@@ -185,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.btn-delete').forEach(btn => btn.addEventListener('click', (e) => confirmDelete(e.currentTarget.closest('.btn-delete').dataset.id)));
     }
 
-    // --- 5. MODAL & CRUD LOGIC ---
+    // --- 6. MODAL & CRUD LOGIC ---
     function openModal(id = null) {
         rundownForm.reset();
         if (id) {
@@ -193,10 +239,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const item = rundownData.find(i => i.id === id);
             if (item) {
                 inputId.value = item.id;
+                switchModalTab(item.type || 'travel'); // Switch tab dinamis sesuai data lama
+                
                 inputTitle.value = item.title;
                 inputDay.value = item.day;
                 
-                // Fallback Waktu Normal
                 let safeTime = item.time;
                 if(safeTime && safeTime.match(/\d{2}:\d{2}/)) {
                     safeTime = safeTime.match(/\d{2}:\d{2}/)[0];
@@ -205,12 +252,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 inputDest.value = item.dest;
                 inputDesc.value = item.desc;
-                inputQty.value = item.qty || '';
-                inputCost.value = item.cost || '';
+                
+                if(item.type === 'food') {
+                    inputQty.value = item.qty || '';
+                    inputCost.value = item.cost || '';
+                }
             }
         } else {
             modalTitle.textContent = "Tambah Agenda";
             inputId.value = "";
+            switchModalTab('travel'); // Default selalu travel saat tambah baru
             if (currentFilter !== 'all') inputDay.value = currentFilter;
         }
         formModal.classList.add('active');
@@ -251,13 +302,19 @@ document.addEventListener('DOMContentLoaded', () => {
             normalizedDay = "Hari " + normalizedDay.substring(5);
         }
 
-        // AUTO CALCULATION TOTAL + 10% PPN
-        const rawQty = parseInt(inputQty.value) || 1;
-        const rawCost = parseFloat(inputCost.value) || 0;
-        const calculatedTotal = (rawCost * rawQty) * 1.10;
+        const activeType = inputType.value;
+        let rawQty = 0, rawCost = 0, calculatedTotal = 0;
+
+        // Hitung biaya HANYA JIKA mode Makan & Belanja (food)
+        if (activeType === 'food') {
+            rawQty = parseInt(inputQty.value) || 1;
+            rawCost = parseFloat(inputCost.value) || 0;
+            calculatedTotal = (rawCost * rawQty) * 1.10; // Auto PPN 10%
+        }
 
         const agendaData = {
             id: inputId.value || Date.now().toString(),
+            type: activeType,
             title: inputTitle.value,
             day: normalizedDay,
             time: inputTime.value,
@@ -281,23 +338,23 @@ document.addEventListener('DOMContentLoaded', () => {
         closeModal();
     });
 
-    // --- 6. EXCEL EXPORT (XLSX) ---
+    // --- 7. EXCEL EXPORT (XLSX) ---
     const exportExcel = () => {
         if(rundownData.length === 0) return;
         const excelData = rundownData.map(item => {
-            // Pengaman Waktu untuk export
             let safeTime = item.time;
             if(safeTime && safeTime.match(/\d{2}:\d{2}/)) { safeTime = safeTime.match(/\d{2}:\d{2}/)[0]; }
             
             return {
                 "Day / Waktu": `${item.day.toLowerCase().includes('hari') ? item.day : 'Hari Ke-'+item.day}`,
                 "Jam (WITA)": safeTime,
-                "Judul Aktivitas & Order": item.title,
-                "Lokasi": item.dest,
+                "Kategori": item.type === 'food' ? 'Makan/Belanja' : 'Perjalanan/Aktivitas',
+                "Judul Aktivitas / Pesanan": item.title,
+                "Lokasi / Resto": item.dest,
                 "Catatan/Deskripsi": item.desc,
-                "Jmlh(Orang/Pcs)": item.qty || 1,
-                "Harga Satuan(Rp)": parseFloat(item.cost) || 0,
-                "Total Akhir(+10% PPN)": parseFloat(item.total) || 0
+                "Jmlh(Orang/Pcs)": item.type === 'food' ? (item.qty || 1) : "-",
+                "Harga Satuan(Rp)": item.type === 'food' ? (parseFloat(item.cost) || 0) : "-",
+                "Total Akhir(+10% PPN)": item.type === 'food' ? (parseFloat(item.total) || 0) : "-"
             };
         }).sort((a, b) => {
             if (a["Day / Waktu"] === b["Day / Waktu"]) return a["Jam (WITA)"].localeCompare(b["Jam (WITA)"]);
@@ -306,10 +363,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const worksheet = XLSX.utils.json_to_sheet(excelData);
         
-        // Memperlebar kolom Excel agar lebih proporsional
         worksheet['!cols'] = [
             {wch: 12}, // Day
             {wch: 12}, // Jam
+            {wch: 18}, // Kategori
             {wch: 35}, // Judul
             {wch: 30}, // Lokasi
             {wch: 50}, // Deskripsi
@@ -320,13 +377,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "AXA_Rundown_Financials");
-        XLSX.writeFile(workbook, "AXA_Exclusive_Itinerary_Cost.xlsx");
+        XLSX.writeFile(workbook, "AXA_Exclusive_Itinerary.xlsx");
     };
 
     document.getElementById('btnExportExcel').addEventListener('click', exportExcel);
     document.getElementById('footerExportBtn').addEventListener('click', (e) => { e.preventDefault(); exportExcel(); });
 
-    // --- 7. INIT ENGINE ---
+    // --- 8. INIT ENGINE ---
     window.addEventListener('click', (e) => {
         if (e.target === formModal) closeModal();
         if (e.target === confirmModal) closeConfirmModal();
@@ -334,5 +391,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderFilters();
     renderTimeline();
-    fetchFromCloud(); // Auto sync in background
+    fetchFromCloud(); // Auto sync
 });
