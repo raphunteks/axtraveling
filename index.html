@@ -27,7 +27,7 @@
     <meta property="twitter:description" content="Sistem manajemen rundown perjalanan eksklusif dari AXA.">
     <meta property="twitter:image" content="https://traveling.maksaarsyad.xyz/axalogo.png">
 
-    <!-- JSON-LD Schema Markup (Structured Data untuk SEO) -->
+    <!-- JSON-LD Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -56,16 +56,23 @@
     }
     </script>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/axalogo.png">
-
-    <!-- Google Fonts (Ibarra Real Nova & Poppins) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Inline styles for the modal tabs -->
+    <style>
+        .modal-tab-btn {
+            background: transparent; border: none; border-bottom: 2px solid transparent; 
+            color: var(--color-text-muted); cursor: pointer; padding: 8px 16px; 
+            font-size: 14px; font-weight: 500; font-family: var(--font-body); 
+            transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .modal-tab-btn:hover { color: var(--color-text-main); }
+        .modal-tab-btn.active { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+    </style>
 </head>
 <body>
 
@@ -77,12 +84,9 @@
                 <h2 class="logo-text">TIMELINE</h2>
             </div>
             <nav class="nav-links" id="filterNav">
-                <!-- Filter Buttons Akan Dirender Otomatis Oleh JS di Dalam Sini -->
                 <div id="dynamicFilters" style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
                     <button class="nav-link active" data-day="all">Semua Jadwal</button>
                 </div>
-
-                <!-- INTEGRASI PORTAL UTAMA -->
                 <a href="https://traveling.maksaarsyad.xyz/" target="_blank" class="btn btn-accent" style="padding: 8px 16px; font-size: 13px; margin-left: 12px; text-transform: uppercase; letter-spacing: 0.5px;">
                     Portal Utama
                     <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left: 6px;"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
@@ -92,7 +96,6 @@
     </header>
 
     <main class="main-content">
-        <!-- Hero Section -->
         <section class="hero container">
             <h1 class="display-title">Exclusive Journey</h1>
             <p class="body-text">
@@ -107,7 +110,6 @@
             </div>
         </section>
 
-        <!-- Timeline Section -->
         <section class="timeline-section container">
             <div class="timeline" id="timelineContainer">
                 <!-- Timeline Items (Rendered via JS) -->
@@ -115,7 +117,6 @@
         </section>
     </main>
 
-    <!-- Super Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -131,7 +132,6 @@
                 </div>
                 <div class="footer-col">
                     <h4>Portal Afiliasi</h4>
-                    <!-- INTEGRASI PORTAL UTAMA DI FOOTER -->
                     <p>Jelajahi destinasi, paket perjalanan, dan layanan unggulan lainnya melalui portal utama kami.</p>
                     <a href="https://traveling.maksaarsyad.xyz/" target="_blank" style="color: var(--color-accent); font-weight: 500; display: inline-flex; align-items: center;">
                         Maksaarsyad Traveling Official
@@ -147,16 +147,25 @@
 
     <!-- Modal: Form CRUD -->
     <div class="modal-overlay" id="formModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="section-title" id="modalTitle" style="margin-bottom: 32px; font-size: 32px; text-align: left;">Tambah Agenda</h2>
+        <div class="modal-content" style="padding-top: 32px;">
+            
+            <h2 class="section-title" id="modalTitle" style="margin-bottom: 24px; font-size: 32px; text-align: left;">Tambah Agenda</h2>
+            
+            <!-- SMART TAB NAVIGATION -->
+            <div style="display: flex; gap: 8px; margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px;">
+                <button type="button" class="modal-tab-btn active" data-tabtype="travel">🛫 Agenda Perjalanan</button>
+                <button type="button" class="modal-tab-btn" data-tabtype="food">🛍️ Makan & Belanja</button>
             </div>
+
             <form id="rundownForm" class="standard-form">
                 <input type="hidden" id="agendaId">
+                <input type="hidden" id="agendaType" value="travel"> <!-- Menyimpan kategori tab -->
+
                 <div class="form-group">
-                    <label>Judul Aktivitas + Order Food Online</label>
-                    <input type="text" id="agendaTitle" class="form-control" placeholder="Cth: Keberangkatan VIP" required>
+                    <label id="lblTitle">Judul Aktivitas</label>
+                    <input type="text" id="agendaTitle" class="form-control" placeholder="Silakan masukkan aktivitas..." required>
                 </div>
+                
                 <div style="display: flex; gap: 24px; flex-wrap: wrap;">
                     <div class="form-group" style="flex: 1; min-width: 150px;">
                         <label>Hari Ke-</label>
@@ -168,8 +177,8 @@
                     </div>
                 </div>
                 
-                <!-- NEW FEATURE: ESTIMASI BIAYA & JUMLAH -->
-                <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+                <!-- DYNAMIC FEATURE: ESTIMASI BIAYA & JUMLAH (Hanya Muncul di Tab Makan/Belanja) -->
+                <div id="financialFields" style="display: none; gap: 24px; flex-wrap: wrap;">
                     <div class="form-group" style="flex: 1; min-width: 150px;">
                         <label>Jmlh Orang / Pcs (Opsional)</label>
                         <input type="number" id="agendaQty" class="form-control" placeholder="Cth: 2" min="1">
@@ -181,13 +190,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Destinasi / Lokasi</label>
-                    <input type="text" id="agendaDest" class="form-control" placeholder="Cth: Terminal 3 Soekarno-Hatta" required>
+                    <label id="lblDest">Destinasi / Lokasi</label>
+                    <input type="text" id="agendaDest" class="form-control" placeholder="Detail lokasi..." required>
                 </div>
                 <div class="form-group">
-                    <label>Deskripsi Detail</label>
+                    <label id="lblDesc">Deskripsi Detail</label>
                     <input type="text" id="agendaDesc" class="form-control" placeholder="Catatan penting untuk peserta..." required>
                 </div>
+                
                 <div class="form-actions">
                     <button type="button" class="btn btn-ghost" id="btnCancelModal">Batal</button>
                     <button type="submit" class="btn btn-primary">Simpan Agenda</button>
@@ -213,7 +223,6 @@
         </div>
     </div>
 
-    <!-- External JavaScript (Module) -->
     <script type="module" src="main.js"></script>
 </body>
 </html>
